@@ -8,12 +8,13 @@ package controlador;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Date;
 
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,22 +62,21 @@ public class ControladorLanzamiento extends HttpServlet {
                 String n_lanzamiento = request.getParameter("txtn_lanzamiento");
                 String k_genero = request.getParameter("txtGenero");
                 Part part = request.getPart("txtArchivo");
-                InputStream inputStream = part.getInputStream();
-                java.sql.Date fecha;
-        try {
-            fecha = (java.sql.Date) new SimpleDateFormat("yyyy-dd-mm").parse(request.getParameter("fechalanzamiento"));
-        } catch (ParseException ex) {
-            Logger.getLogger(ControladorLanzamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                String imgLanzamiento = request.getParameter("txtimagen");
+                
         
-        //java.sql.Date fechasql=new SimpleDateFormat("yyyy-dd-mm").parse(fecha.)
+        
+                String fecha = request.getParameter("fechalanzamiento");
+                System.out.println("FECHA ELEGIDA ES " + fecha);
+                Date date =Date.valueOf(fecha);
+                System.out.println("FECHA sql ES " + date);
                 
                 l.setN_lanzamiento(n_lanzamiento);
                 l.setK_genero(k_genero);
                 //l.setF_lanzamiento(fecha );
-                l.setI_lanzamiento(inputStream);
+                l.setI_lanzamiento(imgLanzamiento);
                 l.setK_artista(102);  //LANA DEL REY!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //l.setF_lanzamiento(fecha);
+                l.setF_lanzamiento(date);
                 ldao.agregar(l);
                 
                 request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);

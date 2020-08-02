@@ -48,10 +48,10 @@
                     </div>
                     <div>
                         <label>Fecha Lanzamiento:</label>
-                        <input type ="date" name="fechalanzamiento">
+                        <input type ="date" data-date="" data-date-format="YYYY MM DD" name="fechalanzamiento">
                     </div>         
                     <label>Foto:</label>
-                    <input type = "file" name="txtArchivo">
+                    <input  name="txtArchivo">
                     <input type="submit" name="accion" value="Agregar Nuevo Lanzamiento">
                     <input type="submit" name="accion" value="regresar">
                 </form>

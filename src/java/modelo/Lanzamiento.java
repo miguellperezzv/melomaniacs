@@ -8,6 +8,7 @@ package modelo;
 import java.io.InputStream;
 import java.sql.Date;
 
+
 /**
  *
  * @author luisy
@@ -18,8 +19,9 @@ public class Lanzamiento {
     String k_genero;
     Date f_lanzamiento;
     String n_lanzamiento;
-    InputStream i_lanzamiento;
-
+    String i_lanzamiento;
+    
+    
     public Lanzamiento() {
     }
 
@@ -63,11 +65,11 @@ public class Lanzamiento {
         this.n_lanzamiento = n_lanzamiento;
     }
 
-    public InputStream getI_lanzamiento() {
+    public String getI_lanzamiento() {
         return i_lanzamiento;
     }
 
-    public void setI_lanzamiento(InputStream i_lanzamiento) {
+    public void setI_lanzamiento(String i_lanzamiento) {
         this.i_lanzamiento = i_lanzamiento;
     }
     

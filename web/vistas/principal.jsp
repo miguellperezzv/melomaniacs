@@ -39,9 +39,9 @@
 
                         </div>
                         <div class="card-body">
-                            <i> $80000 </i>
-
-                            <img src="/img/CHROMATICA.jpg" width="200" height="200">
+                            <center>
+                            <img src="${l.getI_lanzamiento()}" width="200" height="200" alt=""/>
+                            </center>
 
                         </div>
                         <div class="card-footer">

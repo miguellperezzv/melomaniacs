@@ -15,7 +15,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,12 +41,23 @@ public class LanzamientoDAO {
     
     
     public void agregar (Lanzamiento l){
-        String sql = "INSERT INTO PERSONA VALUES ("+l.getK_artista()+"," +this.getNumeroLanzamientos(l.getK_artista())+1 + ", '"+l.getK_genero()+"' , "+l.getF_lanzamiento()+" ,'"+l.getN_lanzamiento()+"' ,"+l.getI_lanzamiento()+"  )";
+        String sql = "INSERT INTO LANZAMIENTO (K_ARTISTA, K_LANZAMIENTO, K_GENERO, F_LANZAMIENTO, N_LANZAMIENTO) "
+                + "VALUES ( "+l.getK_artista()+","+ (this.getNumeroLanzamientos(l.getK_artista())+1) +",'"+ l.getK_genero() +"','"+l.getF_lanzamiento()+"', '"+ l.getN_lanzamiento() +"' )";
         
-        try{
+        
+        try{ 
+            
             conn = cn.getConnection();
-            System.out.println("SENTENCIA INGRESAR LANZ. ES  "+ sql);
+            
             st=conn.prepareStatement(sql);
+            //st.setInt(1, l.getK_artista());
+            //st.setInt(2, this.getNumeroLanzamientos(l.getK_artista())+1 );
+            //st.setString(3, l.getK_genero());
+            //st.setDate(4, (java.sql.Date) fechasql);
+            //st.setString(5, l.getN_lanzamiento());
+            //st.setBinaryStream(6, l.getI_lanzamiento());
+            
+            System.out.println("SENTENCIA INGRESAR LANZ. ES  "+ sql);
             st.executeUpdate();
         }
         catch(SQLException e){
@@ -72,7 +86,7 @@ public class LanzamientoDAO {
                 l.setK_genero(rs.getString("k_genero"));
                 l.setF_lanzamiento(rs.getDate("f_lanzamiento"));
                 l.setN_lanzamiento(rs.getString("n_lanzamiento"));
-                l.setI_lanzamiento(rs.getBinaryStream("i_lanzamiento"));
+                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
                 lista.add(l);
             }
             return lista;
