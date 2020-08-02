@@ -1,0 +1,73 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-jun-2020, 15:10:28
+    Author     : personal
+*/
+
+
+.navbar.navbar-expand-lg.navbar-dark{
+    
+    background-color: black;  
+}
+
+.container.mt-2 {
+    background-color: rgba(0,0,0,0.2); 
+}
+
+.card-footer{
+    background-color: black;
+}
+#lblLanzamiento{
+    font-family: Impact;
+    color: #fefe22; /*LASER LEMON*/
+    font-size:20px;
+}
+
+#lblArtista{
+    font-family: 'Roboto', sans-serif;
+    color: #fefe22; /*LASER LEMON*/
+    font-size: 15px;
+}
+   
+img{
+    border: 2px solid;
+    border-color: #10784f;       
+}
+
+.card-header{
+    background-color: #000000;
+    
+}
+
+.fas.fa-cart-plus{
+    color: #fefe22;
+    size:25px;
+}
+
+.fas.fa-compact-disc{
+    color: #fefe22;
+    size:30px;
+}
+
+.fas.fa-record-vinyl{
+    color: #fefe22;
+    size:30px;
+}
+
+.fas.fa-microphone{
+    color: #fefe22;
+    size:30px;
+}
+
+#tituloNav{
+    font-family: 'Roboto', sans-serif;
+    color: #fefe22; /*LASER LEMON*/
+    font-size: 50px;
+}
+.nav-link{
+    color: #fefe22;
+}

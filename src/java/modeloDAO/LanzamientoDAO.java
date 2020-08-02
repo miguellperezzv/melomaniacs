@@ -85,8 +85,9 @@ public class LanzamientoDAO {
                 l.setK_lanzamiento(rs.getInt("k_lanzamiento"));
                 l.setK_genero(rs.getString("k_genero"));
                 l.setF_lanzamiento(rs.getDate("f_lanzamiento"));
-                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
+                l.setN_lanzamiento((rs.getString("n_lanzamiento")).toUpperCase());
                 l.setI_lanzamiento(rs.getString("i_lanzamiento"));
+                l.setK_artista_nombre((rs.getString("n_artista")));
                 lista.add(l);
             }
             return lista;

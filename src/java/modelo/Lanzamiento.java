@@ -21,6 +21,8 @@ public class Lanzamiento {
     String n_lanzamiento;
     String i_lanzamiento;
     
+    String k_artista_nombre;
+    
     
     public Lanzamiento() {
     }
@@ -71,6 +73,14 @@ public class Lanzamiento {
 
     public void setI_lanzamiento(String i_lanzamiento) {
         this.i_lanzamiento = i_lanzamiento;
+    }
+
+    public String getK_artista_nombre() {
+        return k_artista_nombre;
+    }
+
+    public void setK_artista_nombre(String k_artista_nombre) {
+        this.k_artista_nombre = k_artista_nombre;
     }
     
     

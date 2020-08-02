@@ -33,7 +33,7 @@
             <div class ="container col-lg-5">
                 <form action="ControladorLanzamiento" method="POST" enctype="multipart/form-data">
                     <div>
-                        <label>Nombre: </label>
+                        <label id="nombreLanzamiento">Nombre: </label>
                         <input type = "text" name="txtn_lanzamiento">
                         <label id="container">Genero:
                             <select class="form-control" type="text" name="txtGenero"   onChange="mostrar(this.value);">

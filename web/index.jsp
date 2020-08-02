@@ -24,7 +24,7 @@ and open the template in the editor.
         
         <div class ="container col-lg-5" margin-top="50px" top="50px">
         <form action="ControladorUsuario"> 
-            <p font-size="40 px">melomaniacs</p>
+            <p font-size="50 px" id="tituloNav">melomaniacs</p>
                 <p>Control</p>
         
         

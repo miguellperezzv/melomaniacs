@@ -17,39 +17,40 @@
         <title>Inicio</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+        <script src="https://kit.fontawesome.com/151fccfd32.js" crossorigin="anonymous"></script>
+        <link href="${pageContext.request.contextPath}/CSS/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-color: rgba(0,0,0,0.8);">
 
         <div id="nav-placeholder">
 
         </div>
 
 
-        <div class="container mt-2">
+        <div class="container mt-2" >
             <div class="row">
 
 
                 <c:forEach var = "l" items = "${lanzamientos}" >
-                    <div class="col-sm-4">
-                        <div class="card-header">
-                            ${l.getK_artista() }
-                            -
-                            ${l.getN_lanzamiento()}
+                    <div class="col-lg-3">
 
-                        </div>
                         <div class="card-body">
                             <center>
-                            <img src="${l.getI_lanzamiento()}" width="200" height="200" alt=""/>
+                                <img src="${l.getI_lanzamiento()}" width="230  " height="230" alt=""/>
                             </center>
 
                         </div>
-                        <div class="card-footer">
-                            <label>ALBUM DEL AÑO . PERIOD</label>
-                            <DIV>
-                                <a class="btn btn-outline-success">Comprar</a>
-                                <a class="btn btn-outline-info">Info</a>
-                            </DIV>
+                        <div class="card-footer ">
+                            <center>
+                                <div>
+                                    <label  > <i class="fas fa-compact-disc"></i> <a href="#" id="lblLanzamiento"> ${l.getN_lanzamiento()}</a></label> <br>
+                                </div>
+                                <div>
+                                    <label > <i class="fas fa-microphone"></i><a href="#" id="lblArtista"> ${l.getK_artista_nombre()}</a></label>
+                                </div>
+                            </center>
+                            
                         </div>
                     </div>
                 </c:forEach>
