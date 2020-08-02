@@ -38,8 +38,24 @@ public class LanzamientoDAO {
     
     
     public void agregar (Lanzamiento l){
-        String sql = "INSERT INTO PERSONA VALUES ()";
+        String sql = "INSERT INTO PERSONA VALUES ("+l.getK_artista()+"," +this.getNumeroLanzamientos(l.getK_artista())+1 + ", '"+l.getK_genero()+"' , "+l.getF_lanzamiento()+" ,'"+l.getN_lanzamiento()+"' ,"+l.getI_lanzamiento()+"  )";
+        
+        try{
+            conn = cn.getConnection();
+            System.out.println("SENTENCIA INGRESAR LANZ. ES  "+ sql);
+            st=conn.prepareStatement(sql);
+            st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println("ERROR EN agregar lanzamiento "+ e);
+        }
+    
     }
+    
+    
+    
+    
+    
     public List<Lanzamiento> listarLanzamientos() {
 
         List<Lanzamiento> lista = new ArrayList<>();
@@ -95,5 +111,24 @@ public class LanzamientoDAO {
         } catch (IOException ex) {
             Logger.getLogger(LanzamientoDAO.class.getName()).log(Level.SEVERE, "Error ioexception ", ex);
         }
+    }
+
+    private int getNumeroLanzamientos(int k_artista) {
+        String sql = "SELECT COUNT(*) FROM lanzamiento WHERE k_artista = "+k_artista+";";
+        int cantidad =0;
+        try{
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while(rs.next()){
+                cantidad = rs.getInt("count");
+                
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Error en getNumero Lanzamientos" + e);
+            
+        }
+        return cantidad;
     }
 }

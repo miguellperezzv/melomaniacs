@@ -6,14 +6,23 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.Lanzamiento;
 import modeloDAO.LanzamientoDAO;
 
@@ -21,6 +30,7 @@ import modeloDAO.LanzamientoDAO;
  *
  * @author luisy
  */
+@MultipartConfig
 public class ControladorLanzamiento extends HttpServlet {
 
     /**
@@ -32,19 +42,45 @@ public class ControladorLanzamiento extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     LanzamientoDAO ldao = new LanzamientoDAO();
     List<Lanzamiento> lanzamientos = new ArrayList<>();
+    Lanzamiento l = new Lanzamiento();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String accion = request.getParameter("accion");
-        List<Lanzamiento> lanzamientos =  ldao.listarLanzamientos();
+        List<Lanzamiento> lanzamientos = ldao.listarLanzamientos();
         switch (accion) {
             case "navNuevo":
                 request.getRequestDispatcher("vistas/nuevoLanzamiento.jsp").forward(request, response);
-            break;
+                break;
+
+            case "Agregar Nuevo Lanzamiento":
+                String n_lanzamiento = request.getParameter("txtn_lanzamiento");
+                String k_genero = request.getParameter("txtGenero");
+                Part part = request.getPart("txtArchivo");
+                InputStream inputStream = part.getInputStream();
+                java.sql.Date fecha;
+        try {
+            fecha = (java.sql.Date) new SimpleDateFormat("yyyy-dd-mm").parse(request.getParameter("fechalanzamiento"));
+        } catch (ParseException ex) {
+            Logger.getLogger(ControladorLanzamiento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //java.sql.Date fechasql=new SimpleDateFormat("yyyy-dd-mm").parse(fecha.)
+                
+                l.setN_lanzamiento(n_lanzamiento);
+                l.setK_genero(k_genero);
+                //l.setF_lanzamiento(fecha );
+                l.setI_lanzamiento(inputStream);
+                l.setK_artista(102);  //LANA DEL REY!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //l.setF_lanzamiento(fecha);
+                ldao.agregar(l);
+                
+                request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
+                break;
             default:
                 System.out.println("ENTRANDO A DEFAULT DEL CONTROLADOR");
                 request.setAttribute("lanzamientos", lanzamientos);
@@ -56,7 +92,7 @@ public class ControladorLanzamiento extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControladorLanzamiento</title>");            
+            out.println("<title>Servlet ControladorLanzamiento</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ControladorLanzamiento at " + request.getContextPath() + "</h1>");

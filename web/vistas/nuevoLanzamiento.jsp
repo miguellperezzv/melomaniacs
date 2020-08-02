@@ -46,9 +46,13 @@
                         </label>
 
                     </div>
+                    <div>
+                        <label>Fecha Lanzamiento:</label>
+                        <input type ="date" name="fechalanzamiento">
+                    </div>         
                     <label>Foto:</label>
                     <input type = "file" name="txtArchivo">
-                    <input type="submit" name="accion" value="guardar">
+                    <input type="submit" name="accion" value="Agregar Nuevo Lanzamiento">
                     <input type="submit" name="accion" value="regresar">
                 </form>
             </div>
@@ -61,7 +65,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Proveedor</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Lanzamiento</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -100,8 +104,8 @@
                 //alert("NUEVA CATEGORIA");
                 $('#myModal2').modal('show');
 
-            
-        }
+
+            }
     </script>
 </body>
 </html>
