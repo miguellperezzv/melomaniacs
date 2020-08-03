@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import modelo.Lanzamiento;
+import modeloDAO.ArtistaDAO;
 import modeloDAO.LanzamientoDAO;
 
 /**
@@ -44,6 +45,7 @@ public class ControladorLanzamiento extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     LanzamientoDAO ldao = new LanzamientoDAO();
+    ArtistaDAO adao = new ArtistaDAO();
     List<Lanzamiento> lanzamientos = new ArrayList<>();
     Lanzamiento l = new Lanzamiento();
 
@@ -61,9 +63,9 @@ public class ControladorLanzamiento extends HttpServlet {
             case "Agregar Nuevo Lanzamiento":
                 String n_lanzamiento = request.getParameter("txtn_lanzamiento");
                 String k_genero = request.getParameter("txtGenero");
-                Part part = request.getPart("txtArchivo");
-                String imgLanzamiento = request.getParameter("txtimagen");
                 
+                String imgLanzamiento = request.getParameter("txtArchivo");
+                String n_artista = request.getParameter("txtnartista");
         
         
                 String fecha = request.getParameter("fechalanzamiento");
@@ -73,9 +75,9 @@ public class ControladorLanzamiento extends HttpServlet {
                 
                 l.setN_lanzamiento(n_lanzamiento);
                 l.setK_genero(k_genero);
-                //l.setF_lanzamiento(fecha );
+                
                 l.setI_lanzamiento(imgLanzamiento);
-                l.setK_artista(102);  //LANA DEL REY!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                l.setK_artista(adao.getCodigoporArtista(n_artista) );  
                 l.setF_lanzamiento(date);
                 ldao.agregar(l);
                 

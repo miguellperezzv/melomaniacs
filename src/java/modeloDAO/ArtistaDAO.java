@@ -27,6 +27,7 @@ public class ArtistaDAO {
     
     ArrayList<String> nombres = new ArrayList<>() ;
     
+    
     String sql = "SELECT * FROM artista WHERE LOWER (n_artista) LIKE '%"+find+"%'";
     
     try{
@@ -47,5 +48,24 @@ public class ArtistaDAO {
     return nombres;
     
 }
+
+    public int getCodigoporArtista(String n_artista) {
+        
+        String sql = "SELECT k_artista FROM ARTISTA WHERE LOWER (n_artista) = '"+n_artista.toLowerCase()+"'";
+        int codigo=0;
+        try{
+            conn = cn.getConnection();
+        st = conn.prepareStatement(sql);
+        rs = st.executeQuery();
+        while(rs.next()){
+            codigo=rs.getInt("k_artista");
+        }
+        }
+        catch(SQLException e){
+            System.out.print("ERROR EN getCodigo"+ e);
+        }
+        return codigo;
+        
+    }
     
 }

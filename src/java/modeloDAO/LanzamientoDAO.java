@@ -41,8 +41,8 @@ public class LanzamientoDAO {
     
     
     public void agregar (Lanzamiento l){
-        String sql = "INSERT INTO LANZAMIENTO (K_ARTISTA, K_LANZAMIENTO, K_GENERO, F_LANZAMIENTO, N_LANZAMIENTO) "
-                + "VALUES ( "+l.getK_artista()+","+ (this.getNumeroLanzamientos(l.getK_artista())+1) +",'"+ l.getK_genero() +"','"+l.getF_lanzamiento()+"', '"+ l.getN_lanzamiento() +"' )";
+        String sql = "INSERT INTO LANZAMIENTO (K_ARTISTA, K_LANZAMIENTO, K_GENERO, F_LANZAMIENTO, N_LANZAMIENTO, i_lanzamiento) "
+                + "VALUES ( "+l.getK_artista()+","+ (this.getNumeroLanzamientos(l.getK_artista())+1) +",'"+ l.getK_genero() +"','"+l.getF_lanzamiento()+"', '"+ l.getN_lanzamiento() +"','"+l.getI_lanzamiento()+"'  )";
         
         
         try{ 
@@ -146,4 +146,6 @@ public class LanzamientoDAO {
         }
         return cantidad;
     }
+
+   
 }
