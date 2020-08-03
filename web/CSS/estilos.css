@@ -35,7 +35,7 @@ and open the template in the editor.
    
 img{
     border: 2px solid;
-    border-color: #10784f;       
+    border-color: #fefe23;       
 }
 
 .card-header{
@@ -69,5 +69,39 @@ img{
     font-size: 50px;
 }
 .nav-link{
+    color: #fefe22;
+}
+
+#bodybackground{
+    background-color:  rgba(0,0,0,0.8);
+}
+
+#tituloPaginas{
+    font-family: 'Roboto', sans-serif;
+    color: #fefe22;
+    font-size: 40px;
+}
+hr{
+    border: 2px solid;
+ 
+  color: #fefe23;
+}
+
+form{
+    background-color: black;
+}
+
+#formtext{
+    font-family: 'Roboto', sans-serif;
+    color: #fefe22;
+    font-size: 15px;
+}
+
+.dropdown-menu{
+    background-color: black;
+}
+.dropdown-item{
+    
+    font-family: 'Roboto', sans-serif;
     color: #fefe22;
 }

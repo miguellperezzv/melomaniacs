@@ -27,8 +27,12 @@
 
         </div>
 
-
         <div class="container mt-2" >
+
+            <br>
+            <br>
+            <label id="tituloPaginas">  Nuevos en melomaniacs</label>
+            <hr>
             <div class="row">
 
 
@@ -50,7 +54,7 @@
                                     <label > <i class="fas fa-microphone"></i><a href="#" id="lblArtista"> ${l.getK_artista_nombre()}</a></label>
                                 </div>
                             </center>
-                            
+
                         </div>
                     </div>
                 </c:forEach>

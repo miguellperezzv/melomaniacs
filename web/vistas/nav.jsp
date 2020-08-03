@@ -41,7 +41,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="ControladorLanzamiento?accion=navNuevo" tabindex="-1" aria-disabled="true">Nuevo Lanzamiento</a>
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Nuevo Lanzamiento</a>
                     </li>
                 </ul>
 
@@ -53,13 +53,13 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Iniciar Sesion
+                            Mi Perfil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="ControladorLanzamiento?accion=navNuevo">Nuevo Lanzamiento</a>
+                            <a class="dropdown-item" href="#">Agregar Item</a>
+                            <div class="dropdown-divider" ></div>
+                            <a class="dropdown-item" href="#">Salir</a>
                         </div>
                     </li>
                 </ul>
