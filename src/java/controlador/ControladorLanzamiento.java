@@ -27,6 +27,7 @@ import javax.servlet.http.Part;
 import modelo.Lanzamiento;
 import modeloDAO.ArtistaDAO;
 import modeloDAO.LanzamientoDAO;
+import modeloDAO.ProductoDAO;
 
 /**
  *
@@ -88,8 +89,10 @@ public class ControladorLanzamiento extends HttpServlet {
                 int k_lanzamiento =Integer.parseInt( request.getParameter("k_lanzamiento"));
                 int k_artista = Integer.parseInt(request.getParameter("k_artista"));
                 Lanzamiento l  = ldao.getLanzamiento(k_artista, k_lanzamiento);
+                ProductoDAO pdao = new ProductoDAO();
                 
                 request.setAttribute("ldao", ldao);
+                request.setAttribute("pdao", pdao);
                 request.setAttribute("lanzamiento",l );
                 request.getRequestDispatcher("vistas/lanzamiento.jsp").forward(request, response);
                 break;

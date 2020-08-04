@@ -53,7 +53,7 @@ img{
     size:30px;
 }
 
-.fas.fa-record-vinyl{
+.fas.fa-record-vinyl {
     color: #fefe22;
     size:30px;
 }
@@ -62,6 +62,18 @@ img{
     color: #fefe22;
     size:30px;
 }
+
+.fas.fa-shopping-cart{
+    color: #fefe22;
+    size:200px;
+    
+}
+
+.fas.fa-exchange-alt{
+    color: #fefe22;
+    size:200px;
+}
+
 
 #tituloNav{
     font-family: 'Roboto', sans-serif;
@@ -130,3 +142,14 @@ h5{
     color: #fefe23;
 }
 
+#subtituloAlbum{
+    font-family: 'Roboto', sans-serif;
+    color: #fefe22;
+    font-size:20px;
+}
+
+#subtituloInfo{
+    font-family: 'Roboto', sans-serif;
+    color: #fefe22;
+    font-size:15px;
+}

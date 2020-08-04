@@ -203,4 +203,47 @@ public class LanzamientoDAO {
         
         return n_artista;
     }
+    
+    public int anioLanzamiento(int k_lanzamiento, int k_artista){
+        
+        int anio=0;
+        String sql = "SELECT YEAR(F_LANZAMIENTO) FROM lanzamiento WHERE K_ARTISTA="+k_artista+" AND K_LANZAMIENTO="+k_lanzamiento+" ;";
+        
+        try{
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            
+            while(rs.next()){
+                anio = rs.getInt("YEAR(F_LANZAMIENTO)");
+            }
+        }
+        catch(SQLException e ){
+            System.out.println("Error en getnanio/daolanzamiento" +e );
+        }
+        
+        return anio;
+    }
+    
+    public int cantLanzamiento(int k_lanzamiento, int k_artista){
+        int cant=0;
+        String sql = "SELECT COUNT(*) from producto WHERE K_ARTISTA="+k_artista+" AND K_LANZAMIENTO="+k_lanzamiento+" ;";
+        
+        try{
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            
+            while(rs.next()){
+                cant = rs.getInt("count(*)");
+            }
+        }
+        catch(SQLException e ){
+            System.out.println("Error en getnanio/daolanzamiento" +e );
+        }
+        
+        return cant;
+    }
+    
+    
 }

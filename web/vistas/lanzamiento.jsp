@@ -31,12 +31,33 @@
                 </div>
                 <div class="col-md-6">
                     <div> 
+                        <center>
                         <h2 id="tituloAlbum" > <a id="link" href="#"> ${lanzamiento.getK_artista_nombre().toUpperCase()}</a> - ${lanzamiento.getN_lanzamiento().toUpperCase()}</h2>
+                        <h3 ID="subtituloAlbum">genero: ${lanzamiento.getK_genero()} </h3>
+                        <h3 id="subtituloAlbum">lanzamiento: ${ldao.anioLanzamiento(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista()) } </h3>
+                        <h3 ID="subtituloAlbum">disponibles: ${ldao.cantLanzamiento(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista())} </h3>
+                        </center>
                     </div>
-                    
-                    <div id="info">
+                    <CENTER>
+                    <div  class="row" id="info">
+                        
+                        <div class="col-md-6">
+                        <h3 id="subtituloInfo">CD: ${pdao.cantLanzamientoSegun(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista(), "CD") } </h3>
+                        <h3 id="subtituloInfo">VINILO: ${pdao.cantLanzamientoSegun(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista(),"VINILO")  } </h3>
+                        <h3 id="subtituloInfo">CASETTE: ${pdao.cantLanzamientoSegun(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista(), "CASETTE")  } </h3>
+                        </div>
+                        <vr>
+                        
+                        </vr>
+                        <div class="col-md-6">
+                            <i class="fas fa-shopping-cart fa-lg"></i> <h3 id="subtituloInfo">  ${pdao.cantLanzamientoEstado(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista(), "VENTA")  }</h3>
+                       
+                        
+                        <i class="fas fa-exchange-alt fa-lg"></i><h3 id="subtituloInfo">${pdao.cantLanzamientoEstado(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista(), "INTERCAMBIO")  }</h3>
+                        </div>
                         
                     </div>
+                    </CENTER>
                 </div>
 
 
