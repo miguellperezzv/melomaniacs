@@ -41,17 +41,17 @@
 
                         <div class="card-body">
                             <center>
-                                <img src="${l.getI_lanzamiento()}" width="230  " height="230" alt=""/>
+                               <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}"> <img src="${l.getI_lanzamiento()}" width="230  " height="230" alt=""/> </a>
                             </center>
 
                         </div>
                         <div class="card-footer ">
                             <center>
                                 <div>
-                                    <label  > <i class="fas fa-compact-disc"></i> <a href="ControladorLanzamiento?accion=ArtistaPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}" id="lblLanzamiento"> ${l.getN_lanzamiento()}</a></label> <br>
+                                    <label  > <i class="fas fa-compact-disc"></i> <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}" id="lblLanzamiento"> ${l.getN_lanzamiento()}</a></label> <br>
                                 </div>
                                 <div>
-                                    <label > <i class="fas fa-microphone"></i><a href="#" id="lblArtista"> ${l.getK_artista_nombre()}</a></label>
+                                    <label > <i class="fas fa-microphone"></i><a href="ControladorArtista?accion=ArtistaPage&k_artista=${l.getK_artista()}" id="lblArtista"> ${l.getK_artista_nombre()}</a></label>
                                 </div>
                             </center>
 

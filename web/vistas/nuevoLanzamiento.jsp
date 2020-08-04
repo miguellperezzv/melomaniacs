@@ -127,18 +127,7 @@
                 <script>
 
                         $(function () {
-                            var availableTags = new Array();
-
-                            $("#txtnartista").bind("keydown", function (event) {
-                                var data = {NombreArtista: $("#txtnartista").val()};
-                                $.getJSON("ControladorAutocomplete", data, function (res, est, jqXHR) {
-                                    availableTags.length = 0;
-                                    $.each(res, function (i, item) {
-                                        availableTags[i] = item;
-                                    });
-                                });
-
-                            });
+                            
 
 
                             var availableTags2 = [

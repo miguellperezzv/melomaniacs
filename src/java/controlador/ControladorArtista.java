@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Artista;
 import modelo.Lanzamiento;
 import modeloDAO.ArtistaDAO;
 import modeloDAO.LanzamientoDAO;
@@ -37,23 +38,24 @@ public class ControladorArtista extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
+        
+        
         ArtistaDAO adao = new ArtistaDAO();
         LanzamientoDAO ldao = new LanzamientoDAO();
         String menu = request.getParameter("menu");
         
-        if(menu.equals("NuevoItemForm")){
-            switch(accion){
-                case "Buscar Artista":
-                    
-                    String artista = request.getParameter("txtnartista");
-                    ArrayList<Lanzamiento> lista = ldao.listarNombres(artista);
-                    request.setAttribute("lanzamientos", lista);
-                break;
-                default:
-                    throw new AssertionError();
-            }
-        }
         
+        
+        switch(accion){
+            case "ArtistaPage":
+                
+                int k_artista = Integer.parseInt( request.getParameter("k_artista"));
+                Artista a = new Artista();
+                a = adao.setArtista(k_artista);
+                request.setAttribute("artista",a );
+                request.getRequestDispatcher("vistas/artista.jsp").forward(request, response);
+                break;
+        }
         
         
         

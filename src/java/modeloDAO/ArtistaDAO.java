@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import modelo.Artista;
 
 /**
  *
@@ -66,6 +67,26 @@ public class ArtistaDAO {
         }
         return codigo;
         
+    }
+
+    public Artista setArtista(int k_artista) {
+        Artista a = new Artista();
+        String sql = "SELECT * FROM ARTISTA WHERE k_artista = "+k_artista;
+        
+        try{
+            conn = cn.getConnection();
+            st=conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while(rs.next()){
+                a.setK_artista(rs.getInt("k_artista"));
+                a.setN_artista(rs.getString("n_artista"));
+                a.setD_artista(rs.getString("d_artista"));
+            }
+        }
+        catch(SQLException e){
+            System.out.println("ERROR EN SET ARTISTA DAO" +e);
+        }
+        return a;
     }
     
 }

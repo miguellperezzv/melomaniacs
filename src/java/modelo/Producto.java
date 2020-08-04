@@ -13,16 +13,15 @@ package modelo;
 
 public class Producto {
     int k_producto;
-    int k_estado;
-    int k_formato;
+    String k_estado;
+    String k_formato;
     int k_artista;
     int k_lanzamiento;
-    int d_descripcion;
+    String d_descripcion;
 
     public Producto() {
     }
 
-    
     public int getK_producto() {
         return k_producto;
     }
@@ -31,19 +30,19 @@ public class Producto {
         this.k_producto = k_producto;
     }
 
-    public int getK_estado() {
+    public String getK_estado() {
         return k_estado;
     }
 
-    public void setK_estado(int k_estado) {
+    public void setK_estado(String k_estado) {
         this.k_estado = k_estado;
     }
 
-    public int getK_formato() {
+    public String getK_formato() {
         return k_formato;
     }
 
-    public void setK_formato(int k_formato) {
+    public void setK_formato(String k_formato) {
         this.k_formato = k_formato;
     }
 
@@ -63,13 +62,19 @@ public class Producto {
         this.k_lanzamiento = k_lanzamiento;
     }
 
-    public int getD_descripcion() {
+    public String getD_descripcion() {
         return d_descripcion;
     }
 
-    public void setD_descripcion(int d_descripcion) {
+    public void setD_descripcion(String d_descripcion) {
         this.d_descripcion = d_descripcion;
     }
+
+    
+   
+
+    
+
     
     
 }

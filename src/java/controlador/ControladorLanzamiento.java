@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import modelo.Lanzamiento;
+import modelo.Producto;
 import modeloDAO.ArtistaDAO;
 import modeloDAO.LanzamientoDAO;
 import modeloDAO.ProductoDAO;
@@ -49,6 +50,7 @@ public class ControladorLanzamiento extends HttpServlet {
     ArtistaDAO adao = new ArtistaDAO();
     List<Lanzamiento> lanzamientos = new ArrayList<>();
     Lanzamiento l = new Lanzamiento();
+    ProductoDAO pdao = new ProductoDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -85,14 +87,17 @@ public class ControladorLanzamiento extends HttpServlet {
                 request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
                 break;
                 
-             case "ArtistaPage":
+             case "LanzamientoPage":
                 int k_lanzamiento =Integer.parseInt( request.getParameter("k_lanzamiento"));
                 int k_artista = Integer.parseInt(request.getParameter("k_artista"));
                 Lanzamiento l  = ldao.getLanzamiento(k_artista, k_lanzamiento);
-                ProductoDAO pdao = new ProductoDAO();
+                
+                List <Producto> productos = pdao.getProductos(k_artista, k_lanzamiento);
+                System.out.println("TAMAÑO DEL ARRAY DESDE CONTROLAADOR "+ productos.size());
                 
                 request.setAttribute("ldao", ldao);
                 request.setAttribute("pdao", pdao);
+                request.setAttribute("productos", productos);
                 request.setAttribute("lanzamiento",l );
                 request.getRequestDispatcher("vistas/lanzamiento.jsp").forward(request, response);
                 break;
