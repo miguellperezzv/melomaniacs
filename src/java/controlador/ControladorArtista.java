@@ -69,13 +69,14 @@ public class ControladorArtista extends HttpServlet {
                 break;
 
             case "Agregar Nuevo Producto":
+                System.out.print("entrando controlador nuevo item");
                 String txtartista = request.getParameter("txtnartista");
                 int k_lanzamiento = Integer.parseInt(request.getParameter("txtLanzamientos"));
                 String txtk_estado = request.getParameter("selectEstado");
                 String txtdescripcion = request.getParameter("txtdescripcion");
 
                 System.out.println("MIS VARIABLES DE ITEM SON " + txtartista + ", " + k_lanzamiento + " " + txtk_estado + " , " + txtdescripcion);
-                break;
+                break; 
         }
 
         try (PrintWriter out = response.getWriter()) {

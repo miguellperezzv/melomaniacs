@@ -42,7 +42,7 @@ public class ControladorUsuario extends HttpServlet {
             List<Lanzamiento> lanzamientos = ldao.listarLanzamientos();
             request.setAttribute("lanzamientos", lanzamientos);
                 request.setAttribute("ldao", ldao);
-                request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
+                
             System.out.println("ENTRANDO Al CONTROLADOR");
             request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
         }

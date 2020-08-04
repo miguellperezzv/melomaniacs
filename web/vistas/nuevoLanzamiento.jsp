@@ -141,7 +141,12 @@
                                 "Mark Ronson",
                                 "Bruno Mars",
                                 "The Rolling Stones",
-                                "Frank Ocean"
+                                "Frank Ocean",
+                                "Pantera",
+                                "Metallica",
+                                "The Beatles",
+                                "Nirvana", 
+                                "Tame Impala"
                             ];
                             $("#txtnartista").autocomplete({
                                 source: availableTags2,

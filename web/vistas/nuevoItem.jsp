@@ -70,7 +70,7 @@
                         <input type="text" id="txtdescripcion" placeholder="Ingrese descripcion opcional del producto">
 
                     </div>
-                    <input class="btn btn-outline-success" href="ControladorArtista" type="submit" name="accion" value="Agregar Nuevo Producto">
+                    <input class="btn btn-outline-success" type="submit" name="accion" value="Agregar Nuevo Producto">
                     
                 </form>
                 </center>

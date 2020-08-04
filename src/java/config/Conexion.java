@@ -34,7 +34,7 @@ public class Conexion {
         try {
                 Class.forName("com.mysql.jdbc.Driver");
                 
-                connSQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/melomaniacs", userMYSQL, passMYSQL);
+                connSQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/melomaniacsdb", userMYSQL, passMYSQL);
                 //conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/melomaniacs", user, pass);
                 //connhosting = DriverManager.getConnection("jdbc:mysql://node52360-env-7628496.jelastic.saveincloud.net:3306/melomaniacs", userhosting, passhosting);
                 System.out.println("Conexión realizada. .  .   . ");

@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                     <div> 
                         <center>
-                            <h2 id="tituloAlbum" > <a id="link" href="#"> ${lanzamiento.getK_artista_nombre().toUpperCase()}</a> - ${lanzamiento.getN_lanzamiento().toUpperCase()}</h2>
+                            <h2 id="tituloAlbum" > <a id="link" href="ControladorArtista?accion=ArtistaPage&k_artista=${lanzamiento.getK_artista()}"> ${lanzamiento.getK_artista_nombre().toUpperCase()}</a> - ${lanzamiento.getN_lanzamiento().toUpperCase()}</h2>
                             <h3 ID="subtituloAlbum">genero: ${lanzamiento.getK_genero()} </h3>
                             <h3 id="subtituloAlbum">lanzamiento: ${ldao.anioLanzamiento(lanzamiento.getK_lanzamiento(), lanzamiento.getK_artista()) } </h3>
 
