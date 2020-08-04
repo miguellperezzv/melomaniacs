@@ -20,6 +20,10 @@
         <servlet-name>ControladorItem</servlet-name>
         <servlet-class>controlador.ControladorItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorArtista</servlet-name>
+        <servlet-class>controlador.ControladorArtista</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorIMG</servlet-name>
         <url-pattern>/ControladorIMG</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ControladorItem</servlet-name>
         <url-pattern>/ControladorItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorArtista</servlet-name>
+        <url-pattern>/ControladorArtista</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

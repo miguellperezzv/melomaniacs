@@ -83,6 +83,15 @@ public class ControladorLanzamiento extends HttpServlet {
                 
                 request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
                 break;
+                
+             case "ArtistaPage":
+                int k_lanzamiento =Integer.parseInt( request.getParameter("k_lanzamiento"));
+                int k_artista = Integer.parseInt(request.getParameter("k_artista"));
+                Lanzamiento l  = ldao.getLanzamiento(k_artista, k_lanzamiento);
+                
+                request.setAttribute("lanzamiento",l );
+                request.getRequestDispatcher("vistas/lanzamiento.jsp").forward(request, response);
+                break;
             default:
                 System.out.println("ENTRANDO A DEFAULT DEL CONTROLADOR");
                 request.setAttribute("lanzamientos", lanzamientos);

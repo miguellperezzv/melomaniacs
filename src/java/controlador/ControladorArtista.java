@@ -7,16 +7,20 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Lanzamiento;
+import modeloDAO.ArtistaDAO;
+import modeloDAO.LanzamientoDAO;
 
 /**
  *
  * @author luisy
  */
-public class ControladorItem extends HttpServlet {
+public class ControladorArtista extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,23 +33,39 @@ public class ControladorItem extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
+        ArtistaDAO adao = new ArtistaDAO();
+        LanzamientoDAO ldao = new LanzamientoDAO();
+        String menu = request.getParameter("menu");
         
-        switch(accion){
-            case "navNuevoItem":
-                request.getRequestDispatcher("vistas/nuevoItem.jsp").forward(request, response);
+        if(menu.equals("NuevoItemForm")){
+            switch(accion){
+                case "Buscar Artista":
+                    
+                    String artista = request.getParameter("txtnartista");
+                    ArrayList<Lanzamiento> lista = ldao.listarNombres(artista);
+                    request.setAttribute("lanzamientos", lista);
+                break;
+                default:
+                    throw new AssertionError();
+            }
         }
+        
+        
+        
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControladorItem</title>");            
+            out.println("<title>Servlet ControladorArtista</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ControladorItem at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ControladorArtista at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
