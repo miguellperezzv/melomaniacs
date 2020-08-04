@@ -34,10 +34,10 @@
             <hr>
             <br>
             <div class ="container col-lg-5">
-                <form action="ControladorArtista?menu=NuevoItemForm" method="POST"> 
+                <form action="ControladorArtista?accion=NuevoItemForm" method="POST"> 
                     <div> 
                         <label id="formtext">Artista</label>
-                        <input id="txtnartista" type = "text" name="txtnartista">
+                        <input id="txtnartista" value="${n_artista}" type = "text" name="txtnartista">
                         <br>
                         <input class="btn btn-outline-success" type="submit" name="accion" value="Buscar Artista">
                     </div>
@@ -45,19 +45,33 @@
                     <div id="formAlbumes">
                         <select class="form-control" type="text" name="txtLanzamientos"   onChange="mostrar(this.value);">
 
-                            <c:forEach var= "l" items = "${lanzamientos}">
-                                <option value="${l.getN_lanzamiento() }">  
-                                    ${l.getN_lanzamiento()};
+                            <c:forEach var= "l" items = "${lista}">
+                                <option value="${l.getK_lanzamiento()}">  
+                                    ${l.getN_lanzamiento()}
                                 </option>
                             </c:forEach>
 
 
-                            <option value="nuevogenero" > ---Nuevo Genero</option>
+                            <option value="nuevogenero" > ---No encuentras el Lanzamiento?</option>
+                        </select>
+                        
+                        <select class="form-control" type="text" name="selectEstado"   onChange="mostrar(this.value);">
+
+                            <c:forEach var= "e" items = "${listaEstado}">
+                                <option value="${e.getK_estado()}">  
+                                    ${e.getK_estado()}
+                                </option>
+                            </c:forEach>
+
+
+                            <option value="nuevogenero" > ---Otro Tipo de Estado</option>
                         </select>
 
-
+                        <input type="text" id="txtdescripcion" placeholder="Ingrese descripcion opcional del producto">
 
                     </div>
+                    <input class="btn btn-outline-success" href="ControladorArtista" type="submit" name="accion" value="Agregar Nuevo Producto">
+                    
                 </form>
                 </center>
 

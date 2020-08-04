@@ -7,11 +7,15 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import modelo.Estado;
+import modelo.Lanzamiento;
+import modeloDAO.EstadoDAO;
+import modeloDAO.LanzamientoDAO;
 /**
  *
  * @author luisy
@@ -31,10 +35,35 @@ public class ControladorItem extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
+        LanzamientoDAO ldao = new LanzamientoDAO();
+        EstadoDAO edao = new EstadoDAO();
         
         switch(accion){
             case "navNuevoItem":
+                
+                
                 request.getRequestDispatcher("vistas/nuevoItem.jsp").forward(request, response);
+                 break;
+            case "Buscar Artista":
+                String n_artista = request.getParameter("txtnartista");
+                List<Lanzamiento> lista = ldao.listarNombres(n_artista);
+                List<Estado> listaEstado = edao.getEstados();
+               
+                request.setAttribute("n_artista", n_artista);
+                request.setAttribute("lista", lista);
+                request.setAttribute("listaEstado", listaEstado);
+                request.getRequestDispatcher("vistas/nuevoItem.jsp").forward(request, response);
+                break;
+        
+            case "Agregar Nuevo Producto":
+                String txtartista = request.getParameter("txtnartista");
+                int k_lanzamiento = Integer.parseInt( request.getParameter("txtLanzamientos"));
+                String txtk_estado = request.getParameter("selectEstado");
+                String txtdescripcion = request.getParameter("txtdescripcion");
+                
+                System.out.println("MIS VARIABLES DE ITEM SON "+ txtartista +", " +k_lanzamiento+" "+txtk_estado+" , "+txtdescripcion);
+                break;
+        
         }
         
         try (PrintWriter out = response.getWriter()) {

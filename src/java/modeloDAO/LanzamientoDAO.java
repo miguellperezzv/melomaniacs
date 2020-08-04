@@ -48,8 +48,8 @@ public class LanzamientoDAO {
             rs = st.executeQuery();
             while (rs.next()) {
                 Lanzamiento l = new Lanzamiento();
-                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
-                l.setN_lanzamiento("n_lanzamiento");
+                l.setK_lanzamiento(rs.getInt("K_lanzamiento"));
+                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
                 lista.add(l);
             }
             
