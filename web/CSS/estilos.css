@@ -10,7 +10,7 @@ and open the template in the editor.
 
 
 .navbar.navbar-expand-lg.navbar-dark{
-    
+
     background-color: black;  
 }
 
@@ -32,7 +32,7 @@ and open the template in the editor.
     color: #fefe22; /*LASER LEMON*/
     font-size: 15px;
 }
-   
+
 img{
     border: 2px solid;
     border-color: #fefe23;       
@@ -40,7 +40,7 @@ img{
 
 .card-header{
     background-color: #000000;
-    
+
 }
 
 .fas.fa-cart-plus{
@@ -83,8 +83,8 @@ img{
 }
 hr{
     border: 2px solid;
- 
-  color: #fefe23;
+
+    color: #fefe23;
 }
 
 form{
@@ -101,7 +101,32 @@ form{
     background-color: black;
 }
 .dropdown-item{
-    
+
     font-family: 'Roboto', sans-serif;
     color: #fefe22;
 }
+
+h5{
+    background-color: black;
+    font-family: Impact;
+    color: #fefe22; /*LASER LEMON*/
+    font-size:20px;
+}
+
+#tituloAlbum{
+    
+    font-family: Impact;
+    color: #fefe22; /*LASER LEMON*/
+    font-size:40px; 
+}
+
+#info{
+   
+    margin: 70px;
+    border: 1px solid #fefe23;
+}
+
+#link{
+    color: #fefe23;
+}
+

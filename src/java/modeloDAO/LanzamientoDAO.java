@@ -173,6 +173,7 @@ public class LanzamientoDAO {
                 l.setF_lanzamiento(rs.getDate("f_lanzamiento"));
                 l.setI_lanzamiento(rs.getString("i_lanzamiento"));
                 l.setK_genero(rs.getString("k_genero"));
+                l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
                 
             }
         } catch (SQLException e) {
@@ -197,7 +198,7 @@ public class LanzamientoDAO {
             }
         }
         catch(SQLException e ){
-            
+            System.out.println("Error en getnartista/daolanzamiento" +e );
         }
         
         return n_artista;
