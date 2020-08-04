@@ -7,10 +7,13 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Lanzamiento;
+import modeloDAO.LanzamientoDAO;
 
 /**
  *
@@ -32,8 +35,14 @@ public class ControladorUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String accion = request.getParameter("accion");
-        
+        LanzamientoDAO ldao = new LanzamientoDAO();
         if(accion.equalsIgnoreCase("Ingresar")){
+            
+            
+            List<Lanzamiento> lanzamientos = ldao.listarLanzamientos();
+            request.setAttribute("lanzamientos", lanzamientos);
+                request.setAttribute("ldao", ldao);
+                request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
             System.out.println("ENTRANDO Al CONTROLADOR");
             request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
         }

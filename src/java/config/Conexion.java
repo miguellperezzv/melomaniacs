@@ -15,19 +15,34 @@ import java.sql.SQLException;
  */
 public class Conexion {
     Connection conn;
+    Connection connhosting;
+    
+    Connection connSQL;
     static String nombreBD="melomaniacs";
     String user ="postgres";
     String pass = "postgres";
+    String userMYSQL = "root";
+    String passMYSQL ="root123";
+    
+    String userhosting = "root";
+    String passhosting ="g9vUjjeusz";
+    
+    
+ 
  
     public Connection getConnection() throws SQLException{
         try {
-                Class.forName("org.postgresql.Driver");
-                conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/melomaniacs", user, pass);
+                Class.forName("com.mysql.jdbc.Driver");
+                
+                connSQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/melomaniacs", userMYSQL, passMYSQL);
+                //conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/melomaniacs", user, pass);
+                //connhosting = DriverManager.getConnection("jdbc:mysql://node52360-env-7628496.jelastic.saveincloud.net:3306/melomaniacs", userhosting, passhosting);
                 System.out.println("Conexión realizada. .  .   . ");
             } catch (ClassNotFoundException | SQLException ex) {
                 System.out.print("Error en conexion con la Base De datos: "+ex );
             }
         
-        return conn;
+        return connSQL;
+        //return connhosting;
     }
 }

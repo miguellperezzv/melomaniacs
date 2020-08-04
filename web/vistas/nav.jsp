@@ -13,8 +13,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg" style="background-color: black;" >
-            <a class="navbar-brand" href="#" 
+        <nav class="navbar navbar-expand-sm" style="background-color: black;" >
+            <a class="navbar-brand" href="ControladorLanzamiento?accion=home" 
                style="
                font-family: 'Roboto', sans-serif;
                color: #fefe22; /*LASER LEMON*/

@@ -76,7 +76,7 @@ public class LanzamientoDAO {
         String sql = "SELECT * FROM LANZAMIENTO l, ARTISTA a WHERE a.k_artista = l.k_artista ";
         try {
             conn = cn.getConnection();
-            st = conn.prepareCall(sql);
+            st = conn.prepareStatement(sql);
             System.out.println("LA SENTENCIA SQL ES :" + sql);
             rs = st.executeQuery();
             while (rs.next()) {
@@ -136,7 +136,7 @@ public class LanzamientoDAO {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while(rs.next()){
-                cantidad = rs.getInt("count");
+                cantidad = rs.getInt("count(*)");
                 
             }
         }
