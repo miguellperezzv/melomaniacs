@@ -16,6 +16,10 @@
         <servlet-name>ControladorAutocomplete</servlet-name>
         <servlet-class>controlador.ControladorAutocomplete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorItem</servlet-name>
+        <servlet-class>controlador.ControladorItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorIMG</servlet-name>
         <url-pattern>/ControladorIMG</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ControladorAutocomplete</servlet-name>
         <url-pattern>/ControladorAutocomplete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorItem</servlet-name>
+        <url-pattern>/ControladorItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

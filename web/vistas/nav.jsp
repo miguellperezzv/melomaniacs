@@ -57,7 +57,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="ControladorLanzamiento?accion=navNuevo">Nuevo Lanzamiento</a>
-                            <a class="dropdown-item" href="#">Agregar Item</a>
+                            <a class="dropdown-item" href="ControladorItem?accion=navNuevoItem">Agregar Item</a>
                             <div class="dropdown-divider" ></div>
                             <a class="dropdown-item" href="#">Salir</a>
                         </div>

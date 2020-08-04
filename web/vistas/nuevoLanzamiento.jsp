@@ -142,31 +142,20 @@
 
 
                             var availableTags2 = [
-                                "ActionScript",
-                                "AppleScript",
-                                "Asp",
-                                "BASIC",
-                                "C",
-                                "C++",
-                                "Clojure",
-                                "COBOL",
-                                "ColdFusion",
-                                "Erlang",
-                                "Fortran",
-                                "Groovy",
-                                "Haskell",
-                                "Java",
-                                "JavaScript",
-                                "Lisp",
-                                "Perl",
-                                "PHP",
-                                "Python",
-                                "Ruby",
-                                "Scala",
-                                "Scheme"
+                                "The Weeknd",
+                                "Lana del Rey",
+                                "Michael Jackson",
+                                "Adele",
+                                "Queen",
+                                "Amy Winehouse",
+                                "Kiss",
+                                "Mark Ronson",
+                                "Bruno Mars",
+                                "The Rolling Stones",
+                                "Frank Ocean"
                             ];
                             $("#txtnartista").autocomplete({
-                                source: availableTags,
+                                source: availableTags2,
                                 minLength: 1
                             });
                         }
