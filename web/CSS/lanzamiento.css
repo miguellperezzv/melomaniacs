@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21-ago-2020, 22:37:59
+    Author     : luisy
+*/
+
+
+
+#img:hover .image{
+    opacity: 0.3;
+}
+
+#img:hover .image{
+    opacity: 1;
+}
+
+
+
+
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+ 
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.textoAlbum {
+  
+  
+  font-size: 50px;
+  padding: 16px 32px;
+}
+
+.far.fa-play-circle{
+     color: #fefe22;
+    size:200px;
+}

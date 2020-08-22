@@ -99,6 +99,7 @@ public class ControladorLanzamiento extends HttpServlet {
                 request.setAttribute("pdao", pdao);
                 request.setAttribute("productos", productos);
                 request.setAttribute("lanzamiento",l );
+                System.out.println("SE ENVIA DESDE EL CONTROLADOR "+ l.getS_lanzamiento());
                 request.getRequestDispatcher("vistas/lanzamiento.jsp").forward(request, response);
                 break;
                 

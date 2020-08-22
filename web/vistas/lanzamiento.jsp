@@ -15,21 +15,30 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/151fccfd32.js" crossorigin="anonymous"></script>
-        <link href="${pageContext.request.contextPath}/CSS/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/CSS/estilos.css" rel="stylesheet" type="text/css"/> 
+        <link href="${pageContext.request.contextPath}/CSS/lanzamiento.css" rel="stylesheet" type="text/css"/> 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     </head>
-    <body id="bodybackground">
+    <body >
         <div id="nav-placeholder">
 
         </div>
 
         <br>
 
-        <div class="container mt-2">
+        <div class="container mt-2" style="background-color: #000000;">
 
             <div class="row">
-                <div class="col-md-6">
-                    <center><img src="${lanzamiento.getI_lanzamiento()}" width="400px" height="400px"  alt=""/></center>
+                <div class="col-md-6" id="img">
+                    <center><img src="${lanzamiento.getI_lanzamiento()}" class="image" width="400px" height="400px"  alt=""/></center>
+                    
+
+                    <audio src="${lanzamiento.getS_lanzamiento()}"  id="audio"></audio>
+
+
+                    <div class="middle">
+                        <div class="textoAlbum"> <i class="far fa-play-circle" id="play" onclick="preview()"></i> </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div> 
@@ -89,33 +98,57 @@
                 </tr>
             </thead>
             <tbody>
-                
-            <c:forEach var = "p" items = "${productos}">
-                <tr>
-                    <td scope="row">${lanzamiento.getN_lanzamiento()} - ${lanzamiento.getK_artista_nombre()}</td>
-                    <td>${p.getK_formato()}</td>
-                    <td>${p.getK_estado()}</td>
-                    <td>${p.getD_descripcion()}</td>
-                    <td>${pdao.getN_Proveedor(p.getK_producto())}</td>
-                    <td> <a class="fas fa-compact-disc"></a></td>
-                </tr>
-                
-            </c:forEach>
-                
-                
+
+                <c:forEach var = "p" items = "${productos}">
+                    <tr>
+                        <td scope="row">${lanzamiento.getN_lanzamiento()} - ${lanzamiento.getK_artista_nombre()}</td>
+                        <td>${p.getK_formato()}</td>
+                        <td>${p.getK_estado()}</td>
+                        <td>${p.getD_descripcion()}</td>
+                        <td>${pdao.getN_Proveedor(p.getK_producto())}</td>
+                        <td> <a class="fas fa-compact-disc"></a></td>
+                    </tr>
+
+                </c:forEach>
+
+
             </tbody>
         </table>
     </div>
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
-        $(function () {
-            $("#nav-placeholder").load("vistas/nav.jsp");
-        });
+                            $(function () {
+                                $("#nav-placeholder").load("vistas/nav.jsp");
+                            });
+    </script>
 
+    <script>
+        function preview() {
+            var audio = document.getElementById('audio');
+            if (audio.paused) {
+                audio.play();
+                
 
+// In browsers that don’t yet support this functionality,
+// playPromise won’t be defined.
+                
+                $('#play').removeClass('fa-play-circle');
+                $('#play').addClass('fa-pause-circle');
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+                $('#play').addClass('fa-play-circle');
+                $('#play').removeClass('fa-pause-circle');
+            }
+        }
     </script>
 </body>
 

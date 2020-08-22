@@ -20,11 +20,19 @@ public class Lanzamiento {
     Date f_lanzamiento;
     String n_lanzamiento;
     String i_lanzamiento;
-    
+    String s_lanzamiento;
     String k_artista_nombre;
     
     
     public Lanzamiento() {
+    }
+
+    public String getS_lanzamiento() {
+        return s_lanzamiento;
+    }
+
+    public void setS_lanzamiento(String s_lanzamiento) {
+        this.s_lanzamiento = s_lanzamiento;
     }
 
     public int getK_artista() {

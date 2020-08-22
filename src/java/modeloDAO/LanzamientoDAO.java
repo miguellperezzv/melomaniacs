@@ -167,6 +167,7 @@ public class LanzamientoDAO {
             rs = st.executeQuery();
             
             while (rs.next()) {
+                l.setS_lanzamiento(rs.getString("S_LANZAMIENTO"));
                 l.setN_lanzamiento(rs.getString("n_lanzamiento"));
                 l.setK_artista(rs.getInt("k_artista"));
                 l.setK_lanzamiento(rs.getInt("k_lanzamiento"));
@@ -174,6 +175,7 @@ public class LanzamientoDAO {
                 l.setI_lanzamiento(rs.getString("i_lanzamiento"));
                 l.setK_genero(rs.getString("k_genero"));
                 l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
+                
                 
             }
         } catch (SQLException e) {
