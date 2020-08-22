@@ -247,5 +247,24 @@ public class LanzamientoDAO {
         return cant;
     }
     
-    
+    public List<Lanzamiento> ListarNuevosProductos(){
+        List<Lanzamiento> lista = new ArrayList<>();
+        String sql = "SELECT DISTINCT l.i_lanzamiento, l.n_lanzamiento FROM LANZAMIENTO l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 12";
+        try{
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            
+            while(rs.next()){
+                Lanzamiento l=new Lanzamiento();
+                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
+                l.setN_lanzamiento("n_lanzamiento");
+                lista.add(l);
+            }
+        }
+        catch(SQLException e ){
+            System.out.println("Error en getnanio/daolanzamiento" +e );
+        }
+        return lista;
+    }
 }

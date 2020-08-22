@@ -3,6 +3,9 @@
     Created on : 31-jul-2020, 17:31:36
     Author     : luisy
 --%>
+<%@page import="modelo.Lanzamiento"%>
+<%@page import="java.util.List"%>
+<%@page import="modeloDAO.LanzamientoDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,11 +28,47 @@ and open the template in the editor.
 
         </div>
 
+        
+        
+        
         <div class="grid-container">
-            <div class="NUEVOS-DISPONIBLES">nueevos</div>
-            <div class="INICIO">inicio</div>
-            <div class="SESION">sesion</div>
-            <div class="INFO">info</div>
+            <div class="NUEVOS-DISPONIBLES">
+                <% LanzamientoDAO dao = new LanzamientoDAO();
+                    List<Lanzamiento> lista = dao.ListarNuevosProductos();
+
+                %>   
+                
+                
+                
+
+
+                <%for(int i =0; i<lista.size();i++){%>
+                    <div class="col-lg-3">
+                        <img src="<%lista.get(i).getI_lanzamiento();%> ">
+                        
+                    </div>
+                <%}%>
+
+
+
+            
+                
+              
+                    
+            </div>
+            <div class="INICIO">2</div>
+            <div class="PRINCIPAL">3
+                <div class="INFO" id="jumbo"><div class="jumbotron" id="jumbotron" style="background-color: #000000;">
+                        <h1 class="display-4" style="color: #ffffff">Bienvenido a <h2 style="color: #fefe22"> Melomaniacs!</h2></h1>
+                        <p class="lead" style="color: #ffffff">El lugar donde podrás intercambiar y obtener tu música favorita.</p>
+                        <hr class="my-4">
+                        <p style="color: #ffffff">Inicia Sesión </p>
+                        <p class="lead">
+                            <a class="btn btn-primary btn-lg" href="#" role="button" style="background-color: #fefe22; color: #000000">Entrar</a>
+                        </p>
+                    </div></div>
+                <div class="SESION">5</div>
+            </div>
         </div>
 
 
@@ -63,9 +102,20 @@ and open the template in the editor.
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function () {
             $("#nav-placeholder").load("vistas/nav.jsp");
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#jumbo").fadeIn();
+            $("#jumbotron").fadeIn("slow");
+            $("#div3").fadeIn(3000);
+            );
         });
     </script>
 </html>
