@@ -24,17 +24,17 @@ and open the template in the editor.
 #lblLanzamiento{
     font-family: Impact;
     color: #fefe22; /*LASER LEMON*/
-    font-size:20px;
+    font-size:15px;
 }
 
 #lblArtista{
     font-family: 'Roboto', sans-serif;
-    color: #fefe22; /*LASER LEMON*/
+    color:#cccccc; /*LASER LEMON*/
     font-size: 15px;
 }
 
 img{
-    border: 2px solid;
+    border: 1px solid;
     border-color: #fefe23;       
 }
 
@@ -183,3 +183,29 @@ h5{
 .INFO { grid-area: INFO; }
 
 .SESION { grid-area: SESION; }
+
+#busq{
+    
+    height:180px; 
+    background-color: rgba(254, 254, 35, 0.47);
+    border-radius: 5px;
+    width :140px;
+    
+}
+#busq:hover{
+    background-color: rgb(254, 254, 35);
+    font-size: 20px;
+}
+
+#padrebusq{
+    display: flex;
+   align-items: center;
+   h2{
+       font-size: 13px;
+   }
+}
+
+
+
+
+

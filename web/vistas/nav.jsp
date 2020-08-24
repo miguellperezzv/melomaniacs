@@ -14,7 +14,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-sm" style="background-color: black;" >
-            <a class="navbar-brand" href="ControladorLanzamiento?accion=home" 
+            <a class="navbar-brand" href="ControladorLanzamiento?accion=melomaniacs" 
                style="
                font-family: 'Roboto', sans-serif;
                color: #fefe22; /*LASER LEMON*/

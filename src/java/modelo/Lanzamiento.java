@@ -22,7 +22,15 @@ public class Lanzamiento {
     String i_lanzamiento;
     String s_lanzamiento;
     String k_artista_nombre;
-    
+    int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
     
     public Lanzamiento() {
     }

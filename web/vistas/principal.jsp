@@ -21,7 +21,7 @@
         <link href="${pageContext.request.contextPath}/CSS/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     </head>
-    <body style="background-color: rgba(0,0,0,0.8);">
+    <body style="background-color: #ffffff">
 
         <div id="nav-placeholder">
 
@@ -37,11 +37,11 @@
 
 
                 <c:forEach var = "l" items = "${lanzamientos}" >
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
 
                         <div class="card-body">
                             <center>
-                               <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}"> <img src="${l.getI_lanzamiento()}" width="230  " height="230" alt=""/> </a>
+                               <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}"> <img src="${l.getI_lanzamiento()}" width="150  " height="150" alt=""/> </a>
                             </center>
 
                         </div>

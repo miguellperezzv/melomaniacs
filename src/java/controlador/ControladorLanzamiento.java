@@ -70,7 +70,7 @@ public class ControladorLanzamiento extends HttpServlet {
                 String imgLanzamiento = request.getParameter("txtArchivo");
                 String n_artista = request.getParameter("txtnartista");
         
-        
+                String s_lanzamiento = request.getParameter("txtSound");
                 String fecha = request.getParameter("fechalanzamiento");
                 System.out.println("FECHA ELEGIDA ES " + fecha);
                 Date date =Date.valueOf(fecha);
@@ -78,7 +78,7 @@ public class ControladorLanzamiento extends HttpServlet {
                 
                 l.setN_lanzamiento(n_lanzamiento);
                 l.setK_genero(k_genero);
-                
+                l.setS_lanzamiento(s_lanzamiento);
                 l.setI_lanzamiento(imgLanzamiento);
                 l.setK_artista(adao.getCodigoporArtista(n_artista) );  
                 l.setF_lanzamiento(date);
@@ -102,6 +102,11 @@ public class ControladorLanzamiento extends HttpServlet {
                 System.out.println("SE ENVIA DESDE EL CONTROLADOR "+ l.getS_lanzamiento());
                 request.getRequestDispatcher("vistas/lanzamiento.jsp").forward(request, response);
                 break;
+             case "melomaniacs":
+                 List<Lanzamiento>lista = ldao.ListarNuevosProductos();
+                 request.setAttribute("lista", lista);
+                 request.getRequestDispatcher("index.jsp").forward(request, response);
+                 break;
                 
             default:
                 System.out.println("ENTRANDO A DEFAULT DEL CONTROLADOR");

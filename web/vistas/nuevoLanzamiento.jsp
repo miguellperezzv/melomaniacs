@@ -62,6 +62,9 @@
                     </div>         
                     <label id="formtext">Foto:</label>
                     <input  name="txtArchivo" placeholder="Ingrese la URL de la imagen">
+                    
+                    <label id="formtext">Preview:</label>
+                    <input  name="txtSound" placeholder="Ingrese la URL del preview">
                     <hr>
                     <div>
                         <input class="btn btn-outline-success" type="submit" name="accion" value="Agregar Nuevo Lanzamiento">
@@ -146,7 +149,10 @@
                                 "Metallica",
                                 "The Beatles",
                                 "Nirvana", 
-                                "Tame Impala"
+                                "Tame Impala",
+                                "Kanye West",
+                                "Rihanna",
+                                "Lorde"
                             ];
                             $("#txtnartista").autocomplete({
                                 source: availableTags2,

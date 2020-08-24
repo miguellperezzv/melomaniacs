@@ -18,6 +18,15 @@ public class Producto {
     int k_artista;
     int k_lanzamiento;
     String d_descripcion;
+    int precio;
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
 
     public Producto() {
     }
