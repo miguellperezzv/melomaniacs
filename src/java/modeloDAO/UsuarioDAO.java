@@ -50,4 +50,29 @@ public class UsuarioDAO {
         return u;
     }
 
+    public Usuario getUsuarioPorCodigo(int k_usuario) {
+        Usuario u = new Usuario ();
+        String sql = "SELECT * from usuario \n"
+                + "WHERE u.K_USUARIO =" + k_usuario;
+        
+        try {
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            //System.out.println("SENTENCIA SQL ES "+ sql);
+            while (rs.next()) {
+                u.setK_usuario(rs.getString("k_usuario"));
+                u.setC_usuario(rs.getString("c_usuario"));
+                u.setK_tipo(rs.getString("k_tipo"));
+                u.setN_usuario(rs.getString("n_usuario"));
+                u.setD_usuario(rs.getString("d_usuario"));
+                u.setI_usuario(rs.getString("I_usuario"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en obtener usuario" + e);
+        }
+
+        return u;
+        }
+
 }

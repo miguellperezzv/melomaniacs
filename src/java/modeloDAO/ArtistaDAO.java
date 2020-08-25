@@ -40,7 +40,7 @@ public class ArtistaDAO {
                 nombres.add(rs.getString("n_artista"));
                 System.out.println("ARTISTA " + rs.getString("n_artista"));
             }
-
+            conn.close();
         } catch (SQLException e) {
             System.out.println("error en listado de artistas en dao " + e);
         }
@@ -51,7 +51,7 @@ public class ArtistaDAO {
 
     public int getCodigoporArtista(String n_artista) {
 
-        String sql = "SELECT k_artista FROM ARTISTA WHERE LOWER (n_artista) = '" + n_artista.toLowerCase() + "'";
+        String sql = "SELECT k_artista FROM artista WHERE LOWER (n_artista) = '" + n_artista.toLowerCase() + "'";
         int codigo = 0;
         try {
             conn = cn.getConnection();
@@ -60,6 +60,7 @@ public class ArtistaDAO {
             while (rs.next()) {
                 codigo = rs.getInt("k_artista");
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.print("ERROR EN getCodigo" + e);
         }
@@ -69,7 +70,7 @@ public class ArtistaDAO {
 
     public Artista setArtista(int k_artista) {
         Artista a = new Artista();
-        String sql = "SELECT * FROM ARTISTA WHERE k_artista = " + k_artista;
+        String sql = "SELECT * FROM artista WHERE k_artista = " + k_artista;
 
         try {
             conn = cn.getConnection();
@@ -80,6 +81,7 @@ public class ArtistaDAO {
                 a.setN_artista(rs.getString("n_artista"));
                 a.setD_artista(rs.getString("d_artista"));
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("ERROR EN SET ARTISTA DAO" + e);
         }
@@ -89,14 +91,14 @@ public class ArtistaDAO {
     public List<Artista> getArtistasFormato(String key) {
 
         List<Artista> lista = new ArrayList<>();
-        String sql = "SELECT a.K_ARTISTA, a.N_ARTISTA, count(*) FROM PRODUCTO P, FORMATO f, ARTISTA a, LANZAMIENTO L WHERE \n"
-                + "p.K_FORMATO = f.K_FORMATO\n"
-                + "AND p.K_ARTISTA = a.K_ARTISTA\n"
-                + "AND p.K_LANZAMIENTO = l.K_LANZAMIENTO\n"
-                + "AND a.K_ARTISTA = l.K_ARTISTA\n"
-                + "AND f.K_FORMATO='"+key+"'\n"
-                + "GROUP BY a.K_ARTISTA, a.N_ARTISTA";
-        
+        String sql = "SELECT a.K_ARTISTA, a.N_ARTISTA, count(*) FROM producto p, formato f, artista a, lanzamiento l WHERE \n"
+                + "                p.K_FORMATO = f.K_FORMATO\n"
+                + "                AND p.K_ARTISTA = a.K_ARTISTA\n"
+                + "                AND p.K_LANZAMIENTO = l.K_LANZAMIENTO\n"
+                + "                AND a.K_ARTISTA = l.K_ARTISTA\n"
+                + "                AND f.K_FORMATO='"+key+"'\n"
+                + "                GROUP BY a.K_ARTISTA, a.N_ARTISTA";
+
         try {
             conn = cn.getConnection();
             st = conn.prepareStatement(sql);
@@ -108,6 +110,7 @@ public class ArtistaDAO {
                 a.setCount(rs.getInt("count(*)"));
                 lista.add(a);
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("ERROR EN LISTAR VINILOS" + e);
         }

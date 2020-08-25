@@ -29,7 +29,7 @@ public class GeneroDAO {
     public List<Genero> listarGeneros(){
         
         ArrayList<Genero> generos = new ArrayList<>();
-        String sql = "SELECT * FROM GENERO";
+        String sql = "SELECT * FROM genero";
         
         try{
             conn = cn.getConnection();
@@ -40,6 +40,7 @@ public class GeneroDAO {
                 g.setK_genero(rs.getString("k_genero"));
                 generos.add(g);
             }
+            conn.close();
             return generos;
         }
         catch(SQLException e){

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Lanzamiento;
+import modelo.Usuario;
 import modeloDAO.LanzamientoDAO;
+import modeloDAO.UsuarioDAO;
 
 /**
  *
@@ -36,6 +38,8 @@ public class ControladorUsuario extends HttpServlet {
         
         String accion = request.getParameter("accion");
         LanzamientoDAO ldao = new LanzamientoDAO();
+        UsuarioDAO udao = new UsuarioDAO();
+        
         if(accion.equalsIgnoreCase("Ingresar")){
             
             
@@ -45,6 +49,15 @@ public class ControladorUsuario extends HttpServlet {
                 
             System.out.println("ENTRANDO Al CONTROLADOR");
             request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
+        }
+        
+        
+        if(accion.equals("usuarioPage")){
+            int k_usuario = Integer.parseInt(request.getParameter("k_usuario"));
+            Usuario u = udao.getUsuarioPorCodigo(k_usuario);
+            request.setAttribute("u", u);
+            request.getRequestDispatcher("vistas/Usuario.jsp").forward(request, response);
+            
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

@@ -39,18 +39,8 @@ public class ControladorBuscar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
-        
-        switch(accion){
-            case "generos":
-                
-            break;
-            
-            
-            case "decada":
-                
-            break;
-            case "vinilo":
-                System.out.println("ENTRANDO A CONTTROLADOR VINILO");
+        if(accion.equals("vinilo")){
+            System.out.println("ENTRANDO A CONTTROLADOR VINILO");
                 
                 ArtistaDAO adao= new ArtistaDAO();
                 LanzamientoDAO ldao = new LanzamientoDAO();
@@ -71,6 +61,43 @@ public class ControladorBuscar extends HttpServlet {
                 request.setAttribute("udao", new UsuarioDAO());
                 request.setAttribute("busquedaKey", "VINILO");
                 request.getRequestDispatcher("vistas/busqueda.jsp").forward(request, response);
+        }
+        
+        if(accion.equals("casette")){
+           System.out.println("ENTRANDO A CONTTROLADOR VINILO");
+                
+                ArtistaDAO adao= new ArtistaDAO();
+                LanzamientoDAO ldao = new LanzamientoDAO();
+                ProductoDAO pdao = new ProductoDAO();
+                List<Artista> artistas = adao.getArtistasFormato("CASETTE");
+                List<Lanzamiento> lanzamientos = ldao.getLanzamientosFormato("CASETTE");
+                List<Producto> productos = pdao.getProductosFormato("CASETTE");
+                
+                System.out.println("SE ENVIAN ARTISTAS "+ artistas.size());
+                System.out.println("SE ENVIAn lanza "+ lanzamientos.size());
+                System.out.println("SE ENVIAn productos "+ productos.size());
+                request.setAttribute("artistas", artistas);
+                request.setAttribute("lanzamientos", lanzamientos);
+                request.setAttribute("productos", productos);
+                request.setAttribute("ldao", ldao);
+                request.setAttribute("adao", adao);
+                request.setAttribute("pdao", pdao);
+                request.setAttribute("udao", new UsuarioDAO());
+                request.setAttribute("busquedaKey", "CASETTE");
+                request.getRequestDispatcher("vistas/busqueda.jsp").forward(request, response); 
+        }
+       /* switch(accion){
+            
+            case "generos":
+                
+            break;
+            
+            
+            case "decada":
+                
+            break;
+            case "vinilo":
+                
             break;
             case "intercambio":
                 
@@ -104,7 +131,7 @@ public class ControladorBuscar extends HttpServlet {
             
         
     }
-        
+        */
         
         
         try (PrintWriter out = response.getWriter()) {

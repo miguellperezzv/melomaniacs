@@ -41,7 +41,7 @@ public class LanzamientoDAO {
     public ArrayList<Lanzamiento> listarNombres(String n_artista) {
 
         ArrayList<Lanzamiento> lista = new ArrayList<>();
-        String sql = "SELECT * FROM LANZAMIENTO l, artista a WHERE a.k_artista = l.k_artista AND a.n_artista = '" + n_artista + "';";
+        String sql = "SELECT * FROM lanzamiento l, artista a WHERE a.k_artista = l.k_artista AND a.n_artista = '" + n_artista + "';";
 
         try {
             conn = cn.getConnection();
@@ -61,7 +61,7 @@ public class LanzamientoDAO {
     }
 
     public void agregar(Lanzamiento l) {
-        String sql = "INSERT INTO LANZAMIENTO (K_ARTISTA, K_LANZAMIENTO, K_GENERO, F_LANZAMIENTO, N_LANZAMIENTO, i_lanzamiento, s_lanzamiento) "
+        String sql = "INSERT INTO lanzamiento (K_ARTISTA, K_LANZAMIENTO, K_GENERO, F_LANZAMIENTO, N_LANZAMIENTO, i_lanzamiento, s_lanzamiento) "
                 + "VALUES ( " + l.getK_artista() + "," + (this.getNumeroLanzamientos(l.getK_artista()) + 1) + ",'" + l.getK_genero() + "','" + l.getF_lanzamiento() + "', '" + l.getN_lanzamiento() + "','" + l.getI_lanzamiento() + "', '" + l.getS_lanzamiento() + "'  )";
 
         try {
@@ -87,7 +87,7 @@ public class LanzamientoDAO {
     public List<Lanzamiento> listarLanzamientos() {
 
         List<Lanzamiento> lista = new ArrayList<>();
-        String sql = "SELECT * FROM LANZAMIENTO l, ARTISTA a WHERE a.k_artista = l.k_artista ";
+        String sql = "SELECT * FROM lanzamiento l, artista a WHERE a.k_artista = l.k_artista ";
         try {
             conn = cn.getConnection();
             st = conn.prepareStatement(sql);
@@ -104,6 +104,7 @@ public class LanzamientoDAO {
                 l.setK_artista_nombre((rs.getString("n_artista")));
                 lista.add(l);
             }
+            conn.close();
             return lista;
 
         } catch (SQLException e) {
@@ -133,6 +134,7 @@ public class LanzamientoDAO {
             while ((i = bufferedinputstream.read()) != -1) {
                 bufferedoutputstream.write(i);
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error Listando imagenes (listarIMG)");
         } catch (IOException ex) {
@@ -151,6 +153,7 @@ public class LanzamientoDAO {
                 cantidad = rs.getInt("count(*)");
 
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error en getNumero Lanzamientos" + e);
 
@@ -178,6 +181,7 @@ public class LanzamientoDAO {
                 l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
 
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.print("ERROR EN GET LANZAMIENTO INDIV " + e);
         }
@@ -197,6 +201,7 @@ public class LanzamientoDAO {
             while (rs.next()) {
                 n_artista = rs.getString("n_artista");
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error en getnartista/daolanzamiento" + e);
         }
@@ -217,6 +222,7 @@ public class LanzamientoDAO {
             while (rs.next()) {
                 anio = rs.getInt("YEAR(F_LANZAMIENTO)");
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error en getnanio/daolanzamiento" + e);
         }
@@ -236,6 +242,7 @@ public class LanzamientoDAO {
             while (rs.next()) {
                 cant = rs.getInt("count(*)");
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error en getnanio/daolanzamiento" + e);
         }
@@ -245,7 +252,7 @@ public class LanzamientoDAO {
 
     public List<Lanzamiento> ListarNuevosProductos() {
         List<Lanzamiento> lista = new ArrayList<>();
-        String sql = "SELECT DISTINCT l.i_lanzamiento, l.n_lanzamiento FROM LANZAMIENTO l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 12";
+        String sql = "SELECT DISTINCT l.i_lanzamiento, l.n_lanzamiento FROM lanzamiento l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 12";
         try {
             conn = cn.getConnection();
             st = conn.prepareStatement(sql);
@@ -258,6 +265,7 @@ public class LanzamientoDAO {
                 lista.add(l);
                 //System.out.println("n y url" +l.getN_lanzamiento()+", "+ l.getI_lanzamiento() );
             }
+            conn.close();
             System.out.println("se envian productos" + lista.size());
             return lista;
         } catch (SQLException e) {
@@ -269,13 +277,13 @@ public class LanzamientoDAO {
 
     public List<Lanzamiento> getLanzamientosFormato(String key) {
         List<Lanzamiento> lista = new ArrayList<>();
-        String sql = "SELECT L.K_ARTISTA, L.K_LANZAMIENTO, L.N_LANZAMIENTO, L.I_LANZAMIENTO, count(*) FROM PRODUCTO P, FORMATO f, ARTISTA a, LANZAMIENTO L WHERE \n"
+        String sql = "SELECT l.K_ARTISTA, l.K_LANZAMIENTO, l.N_LANZAMIENTO, l.I_LANZAMIENTO, count(*) FROM producto p, formato f, artista a, lanzamiento l WHERE \n"
                 + "p.K_FORMATO = f.K_FORMATO\n"
                 + "AND p.K_ARTISTA = a.K_ARTISTA\n"
                 + "AND p.K_LANZAMIENTO = l.K_LANZAMIENTO\n"
                 + "AND a.K_ARTISTA = l.K_ARTISTA\n"
                 + "AND f.K_FORMATO='"+key+"'\n"
-                + "GROUP BY L.K_ARTISTA, L.K_LANZAMIENTO, L.N_LANZAMIENTO, L.I_LANZAMIENTO";
+                + "GROUP BY l.K_ARTISTA, l.K_LANZAMIENTO, l.N_LANZAMIENTO, l.I_LANZAMIENTO";
 
         try {
             conn = cn.getConnection();
@@ -290,6 +298,7 @@ public class LanzamientoDAO {
                 l.setCount(rs.getInt("count(*)"));
                 lista.add(l);
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("ERROR EN LISTAR VINILOS" + e);
         }

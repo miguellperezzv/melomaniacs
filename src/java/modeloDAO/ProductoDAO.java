@@ -67,7 +67,7 @@ public class ProductoDAO {
     public List<Producto> getProductos(int k_artista, int k_lanzamiento) {
 
         List<Producto> lista = new ArrayList<>();
-        String sql = "SELECT * FROM PRODUCTO WHERE k_artista=" + k_artista + " AND k_lanzamiento=" + k_lanzamiento;
+        String sql = "SELECT * FROM producto WHERE k_artista=" + k_artista + " AND k_lanzamiento=" + k_lanzamiento;
 
         try {
             conn = cn.getConnection();
@@ -110,12 +110,12 @@ public class ProductoDAO {
         return nombre;
     }
 
-    public List<Producto> getProductosFormato(String vinilo) {
+    public List<Producto> getProductosFormato(String key) {
         List<Producto> lista = new ArrayList<>();
-        String sql = "SELECT p.K_PRODUCTO,p.K_ARTISTA, p.K_LANZAMIENTO, p.P_PRECIO FROM PRODUCTO P, FORMATO f, catalogo c WHERE \n"
+        String sql = "SELECT p.K_PRODUCTO,p.K_ARTISTA, p.K_LANZAMIENTO, p.P_PRECIO FROM producto p, formato f, catalogo c WHERE \n"
                 + "p.K_FORMATO = f.K_FORMATO\n"
                 + "AND c.K_PRODUCTO = p.K_PRODUCTO\n"
-                + "AND f.K_FORMATO='VINILO'";
+                + "AND f.K_FORMATO='"+key+"'";
 
         try {
             conn = cn.getConnection();
@@ -139,7 +139,7 @@ public class ProductoDAO {
     public Producto getProducto(int k_producto){
         Producto p = new Producto();
        
-        String sql = "SELECT * FROM PRODUCTO WHERE K_PRODUCTO = "+k_producto;
+        String sql = "SELECT * FROM producto WHERE K_PRODUCTO = "+k_producto;
 
         try {
             conn = cn.getConnection();
