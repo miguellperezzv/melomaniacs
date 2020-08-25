@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Contacto;
 import modelo.Lanzamiento;
+import modelo.Producto;
 import modelo.Usuario;
+import modeloDAO.CatalogoDAO;
 import modeloDAO.LanzamientoDAO;
+import modeloDAO.ProductoDAO;
 import modeloDAO.UsuarioDAO;
 
 /**
@@ -40,7 +43,8 @@ public class ControladorUsuario extends HttpServlet {
         String accion = request.getParameter("accion");
         LanzamientoDAO ldao = new LanzamientoDAO();
         UsuarioDAO udao = new UsuarioDAO();
-        
+        ProductoDAO pdao = new ProductoDAO();
+        CatalogoDAO cdao = new CatalogoDAO();
         if(accion.equalsIgnoreCase("Ingresar")){
             
             
@@ -54,11 +58,15 @@ public class ControladorUsuario extends HttpServlet {
         
         
         if(accion.equals("usuarioPage")){
-            int k_usuario = Integer.parseInt(request.getParameter("k_usuario"));
+            String k_usuario = (request.getParameter("k_usuario"));
             Usuario u = udao.getUsuarioPorCodigo(k_usuario);
             List <Contacto> contactos = udao.getContactos(k_usuario);
+            List<Producto> productos = cdao.productosUsuario(k_usuario);
+            
             request.setAttribute("contactos", contactos);
             request.setAttribute("u", u);
+            request.setAttribute("productos", productos);
+            request.setAttribute("pdao", pdao);
             request.getRequestDispatcher("vistas/Usuario.jsp").forward(request, response);
             
         }

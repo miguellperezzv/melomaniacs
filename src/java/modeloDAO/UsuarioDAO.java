@@ -53,10 +53,10 @@ public class UsuarioDAO {
         return u;
     }
 
-    public Usuario getUsuarioPorCodigo(int k_usuario) {
+    public Usuario getUsuarioPorCodigo(String k_usuario) {
         Usuario u = new Usuario ();
         String sql = "SELECT * from usuario u \n"
-                + "WHERE u.K_USUARIO =" + k_usuario;
+                + "WHERE u.K_USUARIO ='" + k_usuario+"'";
         
         try {
             conn = cn.getConnection();
@@ -78,7 +78,7 @@ public class UsuarioDAO {
         return u;
         }
 
-    public List<Contacto> getContactos(int k_usuario) {
+    public List<Contacto> getContactos(String k_usuario) {
         List<Contacto> lista = new ArrayList<>();
         String sql = "SELECT * from contacto c  \n"
                 + "WHERE c.K_USUARIO = '" + k_usuario+"'";

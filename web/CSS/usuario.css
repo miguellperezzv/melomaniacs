@@ -17,8 +17,13 @@ h2{
     background-color: #ffffcc;
 }
 
+h7{
+    font-size: 10px;
+}
 
-
+#icon{
+    color: #fefe23;
+}
 
 .grid-container {
   display: grid;
