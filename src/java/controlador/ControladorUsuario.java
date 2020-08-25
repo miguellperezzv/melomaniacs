@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Contacto;
 import modelo.Lanzamiento;
 import modelo.Usuario;
 import modeloDAO.LanzamientoDAO;
@@ -55,6 +56,8 @@ public class ControladorUsuario extends HttpServlet {
         if(accion.equals("usuarioPage")){
             int k_usuario = Integer.parseInt(request.getParameter("k_usuario"));
             Usuario u = udao.getUsuarioPorCodigo(k_usuario);
+            List <Contacto> contactos = udao.getContactos(k_usuario);
+            request.setAttribute("contactos", contactos);
             request.setAttribute("u", u);
             request.getRequestDispatcher("vistas/Usuario.jsp").forward(request, response);
             

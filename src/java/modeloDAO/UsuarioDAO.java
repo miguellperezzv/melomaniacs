@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.Contacto;
 import modelo.Usuario;
 
 /**
@@ -52,7 +55,7 @@ public class UsuarioDAO {
 
     public Usuario getUsuarioPorCodigo(int k_usuario) {
         Usuario u = new Usuario ();
-        String sql = "SELECT * from usuario \n"
+        String sql = "SELECT * from usuario u \n"
                 + "WHERE u.K_USUARIO =" + k_usuario;
         
         try {
@@ -74,5 +77,31 @@ public class UsuarioDAO {
 
         return u;
         }
+
+    public List<Contacto> getContactos(int k_usuario) {
+        List<Contacto> lista = new ArrayList<>();
+        String sql = "SELECT * from contacto c  \n"
+                + "WHERE c.K_USUARIO = '" + k_usuario+"'";
+        
+        try {
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            //System.out.println("SENTENCIA SQL ES "+ sql);
+            while (rs.next()) {
+                Contacto c = new Contacto();
+                c.setK_tipocontacto(rs.getString("k_tipocontacto"));
+                c.setK_usuario(rs.getString("k_usuario"));
+                c.setK_contacto(rs.getInt("k_contacto"));
+                c.setV_contacto(rs.getString("v_contacto"));
+                lista.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en obtener contactos del usuario" + e);
+        }
+
+        return lista;
+        
+    }
 
 }

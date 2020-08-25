@@ -1,0 +1,57 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-ago-2020, 22:04:04
+    Author     : luisy
+*/
+
+h2{
+    font-family: 'Roboto' , sans-Seriff;
+    color: #fefe23;
+}
+
+#acerca{
+    background-color: #ffffcc;
+}
+
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr 0.9fr 1fr 1fr 1fr;
+  grid-template-rows: 2fr 0.1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "infousuario infousuario infousuario infousuario infousuario infousuario infousuario" "infousuario infousuario infousuario infousuario infousuario infousuario infousuario" "infousuario infousuario infousuario infousuario infousuario infousuario infousuario" "catalogo catalogo catalogo catalogo catalogo catalogo catalogo" "catalogo catalogo catalogo catalogo catalogo catalogo catalogo" "catalogo catalogo catalogo catalogo catalogo catalogo catalogo" "catalogo catalogo catalogo catalogo catalogo catalogo catalogo";
+}
+
+.infousuario {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "titulo titulo titulo titulo titulo titulo titulo titulo" "imagen imagen imagen acerca acerca acerca acerca acerca" "imagen imagen imagen acerca acerca acerca acerca acerca" "imagen imagen imagen acerca acerca acerca acerca acerca";
+  grid-area: infousuario;
+}
+
+.titulo { grid-area: titulo; }
+
+.acerca { grid-area: acerca; }
+
+.imagen { grid-area: imagen; }
+
+.catalogo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "busqueda busqueda busqueda busqueda busqueda" "albumes albumes albumes albumes albumes" "albumes albumes albumes albumes albumes" "albumes albumes albumes albumes albumes" "albumes albumes albumes albumes albumes";
+  grid-area: catalogo;
+}
+
+.busqueda { grid-area: busqueda; }
+
+.albumes { grid-area: albumes; }
