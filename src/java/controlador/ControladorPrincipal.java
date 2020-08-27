@@ -7,24 +7,16 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Artista;
-import modelo.Estado;
-import modelo.Lanzamiento;
-import modeloDAO.ArtistaDAO;
-import modeloDAO.EstadoDAO;
-import modeloDAO.LanzamientoDAO;
 
 /**
  *
  * @author luisy
  */
-public class ControladorArtista extends HttpServlet {
+public class ControladorPrincipal extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,50 +29,14 @@ public class ControladorArtista extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
 
-        ArtistaDAO adao = new ArtistaDAO();
-        LanzamientoDAO ldao = new LanzamientoDAO();
-        String menu = request.getParameter("menu");
-        EstadoDAO edao = new EstadoDAO();
-
         switch (accion) {
-            case "ArtistaPage":
 
-                int k_artista = Integer.parseInt(request.getParameter("k_artista"));
-                System.out.println( "k_artista "+ k_artista);
-                Artista a =adao.setArtista(k_artista);
-                List<Lanzamiento> misLanzamientos = ldao.getLanzamientosArtista(k_artista); 
-               
-                request.setAttribute("artista", a);
-                request.setAttribute("misLanzamientos", misLanzamientos);
-                System.out.println("misLanzamientos para artista "+ misLanzamientos.size());
-                request.getRequestDispatcher("vistas/artista.jsp").forward(request, response);
+            case "buscar":
+                request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;
-
-            case "NuevoItemForm":
-
-                String n_artista = request.getParameter("txtnartista");
-                List<Lanzamiento> lista = ldao.listarNombres(n_artista);
-
-                request.setAttribute("n_artista", n_artista);
-                List<Estado> listaEstado = edao.getEstados();
-                request.setAttribute("lista", lista);
-                request.setAttribute("listaEstado", listaEstado);
-                request.getRequestDispatcher("vistas/nuevoItem.jsp").forward(request, response);
-                break;
-
-            case "Agregar Nuevo Producto":
-                System.out.print("entrando controlador nuevo item");
-                String txtartista = request.getParameter("txtnartista");
-                int k_lanzamiento = Integer.parseInt(request.getParameter("txtLanzamientos"));
-                String txtk_estado = request.getParameter("selectEstado");
-                String txtdescripcion = request.getParameter("txtdescripcion");
-
-                System.out.println("MIS VARIABLES DE ITEM SON " + txtartista + ", " + k_lanzamiento + " " + txtk_estado + " , " + txtdescripcion);
-                break; 
         }
 
         try (PrintWriter out = response.getWriter()) {
@@ -88,10 +44,10 @@ public class ControladorArtista extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControladorArtista</title>");
+            out.println("<title>Servlet ControladorPrincipal</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ControladorArtista at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ControladorPrincipal at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

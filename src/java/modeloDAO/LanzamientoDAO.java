@@ -345,5 +345,34 @@ public class LanzamientoDAO {
         }
 
     }
+
+    public List<Lanzamiento> getLanzamientosArtista(int k_artista) {
+        List<Lanzamiento> lista = new ArrayList<>();
+        String sql = "SELECT * FROM lanzamiento l WHERE l.k_artista="+k_artista;
+        try {
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                Lanzamiento l = new Lanzamiento();
+                l.setS_lanzamiento(rs.getString("S_LANZAMIENTO"));
+                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
+                l.setK_artista(rs.getInt("k_artista"));
+                l.setK_lanzamiento(rs.getInt("k_lanzamiento"));
+                l.setF_lanzamiento(rs.getDate("f_lanzamiento"));
+                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
+                l.setK_genero(rs.getString("k_genero"));
+                //l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
+                lista.add(l);
+            }
+            return lista;
+            //conn.close();
+        } catch (SQLException e) {
+            System.out.print("ERROR EN GET LANZAMIENTOs por artista" + e);
+            return lista;
+        }
+        
+    }
     
 }

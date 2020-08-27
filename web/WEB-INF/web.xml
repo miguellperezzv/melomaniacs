@@ -32,6 +32,10 @@
         <servlet-name>ControladorProducto</servlet-name>
         <servlet-class>controlador.ControladorProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorPrincipal</servlet-name>
+        <servlet-class>controlador.ControladorPrincipal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorIMG</servlet-name>
         <url-pattern>/ControladorIMG</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ControladorProducto</servlet-name>
         <url-pattern>/ControladorProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorPrincipal</servlet-name>
+        <url-pattern>/ControladorPrincipal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27-ago-2020, 14:42:41
+    Author     : luisy
+*/
+
+
+#descArtista{
+    font-family: 'Roboto', sans-serif;
+    color:#F4F4F4; /*LASER LEMON*/
+    font-size: 15px;
+}
+
+#bodybackground{
+    background-color: #1f1f1f;
+}
+
+#tituloArtistaPage{
+    font-size: 17px;
+    color: #fefe23;
+}
+
+.h5{
+    background-color: transparent;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #F4F4F4;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "INFO INFO INFO INFO INFO" "INFO INFO INFO INFO INFO" "LANZAMIENTOS LANZAMIENTOS LANZAMIENTOS LANZAMIENTOS LANZAMIENTOS" "LANZAMIENTOS LANZAMIENTOS LANZAMIENTOS LANZAMIENTOS LANZAMIENTOS" "RELACIONADO RELACIONADO RELACIONADO RELACIONADO RELACIONADO" "RELACIONADO RELACIONADO RELACIONADO RELACIONADO RELACIONADO";
+}
+
+.INFO {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "ARTISTA ARTISTA RESUMEN" "ARTISTA ARTISTA RESUMEN";
+  grid-area: INFO;
+}
+
+.ARTISTA {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "NOMBRE NOMBRE DESCRIPCION DESCRIPCION" "NOMBRE NOMBRE DESCRIPCION DESCRIPCION";
+  grid-area: ARTISTA;
+}
+
+.NOMBRE { grid-area: NOMBRE; }
+
+.DESCRIPCION { grid-area: DESCRIPCION; }
+
+.RESUMEN { grid-area: RESUMEN; }
+
+.LANZAMIENTOS { grid-area: LANZAMIENTOS; }
+
+.RELACIONADO { grid-area: RELACIONADO; }
