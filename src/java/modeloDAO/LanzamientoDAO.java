@@ -304,7 +304,7 @@ public class LanzamientoDAO {
                 l.setI_lanzamiento(rs.getString("i_lanzamiento"));
                 l.setK_genero(rs.getString("k_genero"));
                 l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
-                conn.close();
+                //conn.close();
             }
             return l;
             
@@ -328,8 +328,9 @@ public class LanzamientoDAO {
             while (rs.next()) {
                 Lanzamiento l = new Lanzamiento();
                 l.setI_lanzamiento(rs.getString("i_lanzamiento"));
-                l.setK_artista_nombre(this.getN_artista(rs.getInt("k_artista")) );
-                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
+                l.setN_lanzamiento(rs.getString("N_LANZAMIENTO"));
+                l.setK_artista(rs.getInt("k_artista")) ;
+               
                 lista.add(l);
                 
             }

@@ -167,7 +167,7 @@ public class ProductoDAO {
     
      public List<Producto> ListarNuevosProductos() {
         List<Producto> lista = new ArrayList<>();
-        String sql = "SELECT DISTINCT p.k_producto FROM lanzamiento l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 10";
+        String sql = "SELECT DISTINCT * FROM lanzamiento l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 10";
         try {
             conn = cn.getConnection();
             st = conn.prepareStatement(sql);
@@ -176,6 +176,13 @@ public class ProductoDAO {
             while (rs.next()) {
                 Producto p = new Producto();
                 p.setK_producto(rs.getInt("p.k_producto"));
+                p.setK_producto(rs.getInt("p.k_producto"));
+                p.setK_estado(rs.getString("p.k_estado"));
+                p.setK_formato(rs.getString("p.k_formato"));
+                p.setK_artista(rs.getInt("p.k_artista"));
+                p.setK_lanzamiento(rs.getInt("p.k_lanzamiento"));
+                p.setD_descripcion(rs.getString("p.d_descripcion"));
+                p.setPrecio(rs.getInt("p.p_precio"));
                 lista.add(p);
                 //System.out.println("n y url" +l.getN_lanzamiento()+", "+ l.getI_lanzamiento() );
             }

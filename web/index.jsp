@@ -95,7 +95,7 @@ and open the template in the editor.
 
                 <div class="NUEVOSLANZAMIENTOS" style="background-color: #1f1f1f;">
                     <center><h2 id="subtituloInfo" style="font-size: 30px"> Nuevos Lanzamientos</h2></center>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" width="300" height="300">
+                    <center><div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" width="300" height="300">
 
                             <div class="carousel-inner"  >
 
@@ -104,18 +104,21 @@ and open the template in the editor.
                                         <c:when test="${i.index==0}">
                                             <div class="carousel-item active" >
                                                 <img class="d-block w-100" src="${l.getI_lanzamiento()}" alt="First slide" >
-                                                <div class="carousel-caption d-none d-md-block">
+                                                <div class="carousel-caption d-none d-md-block" id="textCarrusel">
                                                     <a href="#"><h5 >${l.getN_lanzamiento()}</h5></a>
-                                                    <a href="#" style="color:white"><p>${adao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                    <a href="#" style="color:white"><p>${adao.setArtista(l.getK_artista()).getN_artista()}</p></a>
                                                 </div>
                                             </div>
                                         </c:when>    
                                         <c:otherwise>
                                             <div class="carousel-item" >
-                                                <img class="d-block w-100" src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" alt="First slide" >
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
-                                                    <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                <img class="d-block w-100" src="${l.getI_lanzamiento()}" alt="First slide" >
+                                                <div class="carousel-caption d-none d-md-block" id="textCarrusel">
+                                                    <div>
+                                                        <a href="#"><h5 >${l.getN_lanzamiento()}</h5></a>
+                                                        <a href="#" style="color:white"><p>${adao.setArtista(l.getK_artista()).getN_artista()}</p></a>
+                                                    </div>  
+
                                                 </div>
                                             </div>
                                         </c:otherwise>
@@ -135,7 +138,7 @@ and open the template in the editor.
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
-                        </div>
+                        </div></center>
 
                     <center></center>
 
@@ -147,7 +150,7 @@ and open the template in the editor.
                 </div>
                 <div class="NUEVOSPRODUCTOS">
                     <center><h2 id="subtituloInfo" style="font-size: 30px"> Nuevos Productos</h2></center>
-                    <center><div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" width="300" height="300">
+                    <center><div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" width="300" height="300">
 
                             <div class="carousel-inner"  >
 
@@ -156,18 +159,34 @@ and open the template in the editor.
                                         <c:when test="${i.index==0}">
                                             <div class="carousel-item active" >
                                                 <img class="d-block w-100" src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" alt="First slide" >
-                                                <div class="carousel-caption d-none d-md-block">
+                                                <div class="carousel-caption d-none d-md-block" id="textCarrusel">
+
                                                     <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
                                                     <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+
+
+                                                    <strong><p>${p.getK_estado()} - ${p.getK_formato()}
+
+                                                        </p> </strong>
+
                                                 </div>
                                             </div>
                                         </c:when>    
                                         <c:otherwise>
                                             <div class="carousel-item" >
                                                 <img class="d-block w-100" src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" alt="First slide" >
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
-                                                    <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                <div class="carousel-caption d-none d-md-block" id="textCarrusel">
+                                                    <div>
+                                                        <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
+                                                        <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                        <strong><p>${p.getK_estado()} - ${p.getK_formato()}
+
+                                                        </p> </strong>
+                                                    
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </c:otherwise>
@@ -179,11 +198,11 @@ and open the template in the editor.
 
 
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -225,18 +244,7 @@ and open the template in the editor.
 
 
 
-        <div class ="container col-lg-5" margin-top="50px" top="50px">
-            <form action="ControladorUsuario"> 
-                <p font-size="50 px" id="tituloNav">melomaniacs</p>
-                <p>Control</p>
 
-
-
-
-                <input class="btn btn-danger btn-block" type="submit" name="accion" value="ingresar" >
-
-            </form>
-        </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -112,6 +112,10 @@ public class ControladorLanzamiento extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;
 
+                
+            case "home":
+                request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
+                break;
             default:
                 
 
