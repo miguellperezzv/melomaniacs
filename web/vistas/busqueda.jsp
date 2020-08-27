@@ -63,7 +63,7 @@
                         <div class="col-lg-3" style="margin: 1px; ">
                             <div class="row">
                                 <div class="col-lg-6"><center> <img src="${l.getI_lanzamiento()}" width="80" height="80"> </center></div>
-                                <div class="col-lg-6"> <strong><h6 id="label"> ${l.getN_lanzamiento()} - ${adao.setArtista(l.getK_artista()).getN_artista()} </h6></strong></div>
+                                <div class="col-lg-6"> <strong><h6 id="label"> <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}"> ${l.getN_lanzamiento()} - ${adao.setArtista(l.getK_artista()).getN_artista()} </a></h6></strong></div>
                             </div>
 
                         </div>

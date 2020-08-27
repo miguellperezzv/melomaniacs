@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/151fccfd32.js" crossorigin="anonymous"></script>
-        <link href="${pageContext.request.contextPath}/CSS/busqueda.css" rel="stylesheet" type="text/css"/>
+
         <link href="${pageContext.request.contextPath}/CSS/usuario.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     </head>
@@ -24,7 +24,7 @@
 
     <body style="background-color: #1f1f1f">
 
-        <div class="container" style="margin-left: 10px; margin-left: 10px;">
+        <div class="container" style="margin-left: 10px; margin-right: 10px;">
             <br>
             <br>
             <h2>${u.getN_usuario()} </h2>
@@ -83,18 +83,44 @@
                     </div>
                 </div>
                 <div> 
-                    <c:forEach var= "p" items ="${productos}">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <div>
-                                <h2> </h2>
+                        <c:forEach var= "p" items ="${productos}">
+
+                            <div class="col-lg-3" >
+                                <center> <div id="padre">
+                                    <div id="img">
+                                        <center>   <img src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" class="image" width="150" height="150"></center>
+                                        <audio src="${ldao.getLanzamientoProducto(p.getK_producto()).getS_lanzamiento()}"  id="audio"></audio>
+
+
+                                        <div class="middle" width="150" height="150">
+                                            <div class="textoAlbum"> <i class="far fa-play-circle" id="play" onclick="preview()"></i><i class="fa fa-cart-plus" style="color: #fefe23;"></i> </div>
+                                        </div>
+                                    </div>
+                                </div></center> 
+                                <div>
+                                    <center>
+                                        <strong><h5 style="background-color: transparent;">${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()} </h5></strong>
+                                        <h4 style="color: #fefe23; font-size: 10px;">${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()} </h4>
+                                    </center>
+                                    <div class="row">
+                                        <center>
+                                        <div  id="margen">
+                                            <strong><center><h7 style="background-color: #fefe23; font-size: 10px;">${p.getK_formato()} / ${p.getK_estado()}</h7> </center></strong>
+                                        </div>
+                                        </center>
+                                        
+                                        
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h2>info </h2>
-                            </div>
-                        </div>
+
+                        </c:forEach>
+                        <br>
+                        <br>
                     </div>
-                </c:forEach>
+
+
                 </div>
             </div>
 
@@ -115,11 +141,32 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="//code.jquery.com/jquery.min.js"></script>
         <script>
-            $(function () {
-                $("#nav-placeholder").load("vistas/nav.jsp");
-            });
+                                                $(function () {
+                                                    $("#nav-placeholder").load("vistas/nav.jsp");
+                                                });
 
 
+        </script>
+
+        <script>
+            function preview() {
+                var audio = document.getElementById('audio');
+                if (audio.paused) {
+                    audio.play();
+
+
+// In browsers that don’t yet support this functionality,
+// playPromise won’t be defined.
+
+                    $('#play').removeClass('fa-play-circle');
+                    $('#play').addClass('fa-pause-circle');
+                } else {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    $('#play').addClass('fa-play-circle');
+                    $('#play').removeClass('fa-pause-circle');
+                }
+            }
         </script>
     </body>
 </html>

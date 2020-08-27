@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Artista;
+import modelo.Lanzamiento;
 import modelo.Producto;
 
 /**
@@ -161,4 +162,32 @@ public class ProductoDAO {
         }
         return p;
     }
+    
+    
+    
+     public List<Producto> ListarNuevosProductos() {
+        List<Producto> lista = new ArrayList<>();
+        String sql = "SELECT DISTINCT p.k_producto FROM lanzamiento l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 10";
+        try {
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                Producto p = new Producto();
+                p.setK_producto(rs.getInt("p.k_producto"));
+                lista.add(p);
+                //System.out.println("n y url" +l.getN_lanzamiento()+", "+ l.getI_lanzamiento() );
+            }
+            conn.close();
+            System.out.println("se envian productos" + lista.size());
+            return lista;
+        } catch (SQLException e) {
+            System.out.println("Error en listar productos" + e);
+            return lista;
+        }
+
+    }
+    
+    
 }

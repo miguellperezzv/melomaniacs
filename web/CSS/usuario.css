@@ -17,13 +17,87 @@ h2{
     background-color: #ffffcc;
 }
 
-h7{
+.h7{
+    
     font-size: 10px;
+    color: #fefe23;
+}
+
+.h4{
+   
+    color: #fefe23;
+}
+
+.h5{
+    font-family: 'Roboto' , sans-Seriff;
+    font-size: 8px;
+    color:#fefe23;
+    background-color: transparent;
 }
 
 #icon{
     color: #fefe23;
 }
+
+#img:hover .image{
+    opacity: 0.3;
+}
+
+#img:hover .image{
+    opacity: 1;
+}
+
+
+#padre {
+  position: relative;
+  width: 50%;
+}
+
+
+
+.image {
+  opacity: 1;
+  display: block;
+ 
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+#padre:hover .image {
+  opacity: 0.3;
+}
+
+#padre:hover .middle {
+  opacity: 1;
+}
+
+.textoAlbum {
+  
+  
+  font-size: 50px;
+  padding: 16px 32px;
+}
+
+.far.fa-play-circle{
+     color: #fefe22;
+    size:200px;
+}
+
+.far.fa-pause-circle{
+     color: #fefe22;
+    size:200px;
+}
+
 
 .grid-container {
   display: grid;

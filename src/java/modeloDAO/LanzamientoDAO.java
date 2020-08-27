@@ -178,15 +178,17 @@ public class LanzamientoDAO {
                 l.setF_lanzamiento(rs.getDate("f_lanzamiento"));
                 l.setI_lanzamiento(rs.getString("i_lanzamiento"));
                 l.setK_genero(rs.getString("k_genero"));
-                l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
+                //l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
 
             }
-            conn.close();
+            return l;
+            //conn.close();
         } catch (SQLException e) {
             System.out.print("ERROR EN GET LANZAMIENTO INDIV " + e);
+            return l;
         }
 
-        return l;
+        
     }
 
     public String getN_artista(int k_artista) {
@@ -250,30 +252,7 @@ public class LanzamientoDAO {
         return cant;
     }
 
-    public List<Lanzamiento> ListarNuevosProductos() {
-        List<Lanzamiento> lista = new ArrayList<>();
-        String sql = "SELECT DISTINCT l.i_lanzamiento, l.n_lanzamiento FROM lanzamiento l,catalogo c, producto p WHERE l.K_LANZAMIENTO = p.K_LANZAMIENTO AND c.k_producto = p.K_PRODUCTO ORDER BY c.f_catalogo DESC LIMIT 12";
-        try {
-            conn = cn.getConnection();
-            st = conn.prepareStatement(sql);
-            rs = st.executeQuery();
-
-            while (rs.next()) {
-                Lanzamiento l = new Lanzamiento();
-                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
-                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
-                lista.add(l);
-                //System.out.println("n y url" +l.getN_lanzamiento()+", "+ l.getI_lanzamiento() );
-            }
-            conn.close();
-            System.out.println("se envian productos" + lista.size());
-            return lista;
-        } catch (SQLException e) {
-            System.out.println("Error en getnanio/daolanzamiento" + e);
-            return lista;
-        }
-
-    }
+   
 
     public List<Lanzamiento> getLanzamientosFormato(String key) {
         List<Lanzamiento> lista = new ArrayList<>();
@@ -305,4 +284,64 @@ public class LanzamientoDAO {
         return lista;
 
     }
+    
+    public Lanzamiento getLanzamientoProducto(int producto) {
+        Lanzamiento l = new Lanzamiento();
+        String sql = "SELECT * FROM lanzamiento l, producto p WHERE p.k_lanzamiento = l.k_lanzamiento AND p.k_artista = l.k_artista \n"
+                + "AND p.k_producto = "+ producto;
+
+        try {
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                l.setS_lanzamiento(rs.getString("S_LANZAMIENTO"));
+                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
+                l.setK_artista(rs.getInt("k_artista"));
+                l.setK_lanzamiento(rs.getInt("k_lanzamiento"));
+                l.setF_lanzamiento(rs.getDate("f_lanzamiento"));
+                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
+                l.setK_genero(rs.getString("k_genero"));
+                l.setK_artista_nombre(this.getN_artista(l.getK_artista()));
+                conn.close();
+            }
+            return l;
+            
+        } catch (SQLException e) {
+            System.out.print("ERROR EN GET LANZAMIENTO INDIV por producto " + e);
+            return l;
+        }
+
+        
+    }
+    
+    
+    public List<Lanzamiento> ListarNuevosLanzamientos() {
+        List<Lanzamiento> lista = new ArrayList<>();
+        String sql = "SELECT * FROM lanzamiento ORDER BY F_LANZAMIENTO DESC LIMIT 10";
+        try {
+            conn = cn.getConnection();
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                Lanzamiento l = new Lanzamiento();
+                l.setI_lanzamiento(rs.getString("i_lanzamiento"));
+                l.setK_artista_nombre(this.getN_artista(rs.getInt("k_artista")) );
+                l.setN_lanzamiento(rs.getString("n_lanzamiento"));
+                lista.add(l);
+                
+            }
+            
+            conn.close();
+            System.out.println("se envian LAZNAMIENTOS NUEVOS" + lista.size());
+            return lista;
+        } catch (SQLException e) {
+            System.out.println("Error en LISTAR NUEVOS lanzamientos" + e);
+            return lista;
+        }
+
+    }
+    
 }

@@ -57,7 +57,7 @@ public class ControladorLanzamiento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String accion = request.getParameter("accion");
-        List<Lanzamiento> lanzamientos = ldao.listarLanzamientos();
+        
         switch (accion) {
             case "navNuevo":
                 request.getRequestDispatcher("vistas/nuevoLanzamiento.jsp").forward(request, response);
@@ -66,53 +66,56 @@ public class ControladorLanzamiento extends HttpServlet {
             case "Agregar Nuevo Lanzamiento":
                 String n_lanzamiento = request.getParameter("txtn_lanzamiento");
                 String k_genero = request.getParameter("txtGenero");
-                
+
                 String imgLanzamiento = request.getParameter("txtArchivo");
                 String n_artista = request.getParameter("txtnartista");
-        
+
                 String s_lanzamiento = request.getParameter("txtSound");
                 String fecha = request.getParameter("fechalanzamiento");
                 System.out.println("FECHA ELEGIDA ES " + fecha);
-                Date date =Date.valueOf(fecha);
+                Date date = Date.valueOf(fecha);
                 System.out.println("FECHA sql ES " + date);
-                
+
                 l.setN_lanzamiento(n_lanzamiento);
                 l.setK_genero(k_genero);
                 l.setS_lanzamiento(s_lanzamiento);
                 l.setI_lanzamiento(imgLanzamiento);
-                l.setK_artista(adao.getCodigoporArtista(n_artista) );  
+                l.setK_artista(adao.getCodigoporArtista(n_artista));
                 l.setF_lanzamiento(date);
                 ldao.agregar(l);
-                
+
                 request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
                 break;
-                
-             case "LanzamientoPage":
-                int k_lanzamiento =Integer.parseInt( request.getParameter("k_lanzamiento"));
+
+            case "LanzamientoPage":
+                int k_lanzamiento = Integer.parseInt(request.getParameter("k_lanzamiento"));
                 int k_artista = Integer.parseInt(request.getParameter("k_artista"));
-                Lanzamiento l  = ldao.getLanzamiento(k_artista, k_lanzamiento);
-                
-                List <Producto> productos = pdao.getProductos(k_artista, k_lanzamiento);
-                System.out.println("TAMAÑO DEL ARRAY DESDE CONTROLAADOR "+ productos.size());
-                
+                Lanzamiento l = ldao.getLanzamiento(k_artista, k_lanzamiento);
+
+                List<Producto> productos = pdao.getProductos(k_artista, k_lanzamiento);
+                System.out.println("TAMAÑO DEL ARRAY DESDE CONTROLAADOR " + productos.size());
+
                 request.setAttribute("ldao", ldao);
                 request.setAttribute("pdao", pdao);
                 request.setAttribute("productos", productos);
-                request.setAttribute("lanzamiento",l );
-                System.out.println("SE ENVIA DESDE EL CONTROLADOR "+ l.getS_lanzamiento());
+                request.setAttribute("lanzamiento", l);
+                System.out.println("SE ENVIA DESDE EL CONTROLADOR " + l.getS_lanzamiento());
                 request.getRequestDispatcher("vistas/lanzamiento.jsp").forward(request, response);
                 break;
-             case "melomaniacs":
-                 List<Lanzamiento>lista = ldao.ListarNuevosProductos();
-                 request.setAttribute("lista", lista);
-                 request.getRequestDispatcher("index.jsp").forward(request, response);
-                 break;
-                
+            case "melomaniacs":
+                List<Producto> lista = pdao.ListarNuevosProductos();
+                List<Lanzamiento> listaNuevos = ldao.ListarNuevosLanzamientos();
+                request.setAttribute("lista", lista);
+                request.setAttribute("nuevos", listaNuevos);
+                request.setAttribute("ldao", new LanzamientoDAO());
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                break;
+
             default:
-                System.out.println("ENTRANDO A DEFAULT DEL CONTROLADOR");
-                request.setAttribute("lanzamientos", lanzamientos);
-                request.setAttribute("ldao", ldao);
-                request.getRequestDispatcher("vistas/principal.jsp").forward(request, response);
+                
+
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                break;
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

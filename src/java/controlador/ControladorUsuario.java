@@ -67,6 +67,7 @@ public class ControladorUsuario extends HttpServlet {
             request.setAttribute("u", u);
             request.setAttribute("productos", productos);
             request.setAttribute("pdao", pdao);
+            request.setAttribute("ldao", ldao);
             request.getRequestDispatcher("vistas/Usuario.jsp").forward(request, response);
             
         }
