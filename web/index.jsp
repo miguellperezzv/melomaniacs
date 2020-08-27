@@ -105,8 +105,8 @@ and open the template in the editor.
                                             <div class="carousel-item active" >
                                                 <img class="d-block w-100" src="${l.getI_lanzamiento()}" alt="First slide" >
                                                 <div class="carousel-caption d-none d-md-block" id="textCarrusel">
-                                                    <a href="#"><h5 >${l.getN_lanzamiento()}</h5></a>
-                                                    <a href="#" style="color:white"><p>${adao.setArtista(l.getK_artista()).getN_artista()}</p></a>
+                                                    <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}"><h5 >${l.getN_lanzamiento()}</h5></a>
+                                                    <a href="ControladorArtista=?accion=ArtistaPage&k_artista=${l.getK_artista()}" style="color:white"><p>${adao.setArtista(l.getK_artista()).getN_artista()}</p></a>
                                                 </div>
                                             </div>
                                         </c:when>    
@@ -115,8 +115,8 @@ and open the template in the editor.
                                                 <img class="d-block w-100" src="${l.getI_lanzamiento()}" alt="First slide" >
                                                 <div class="carousel-caption d-none d-md-block" id="textCarrusel">
                                                     <div>
-                                                        <a href="#"><h5 >${l.getN_lanzamiento()}</h5></a>
-                                                        <a href="#" style="color:white"><p>${adao.setArtista(l.getK_artista()).getN_artista()}</p></a>
+                                                        <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${l.getK_lanzamiento()}&k_artista=${l.getK_artista()}"><h5 >${l.getN_lanzamiento()}</h5></a>
+                                                        <a href="ControladorArtista=?accion=ArtistaPage&k_artista=${l.getK_artista()}" style="color:white"><p>${adao.setArtista(l.getK_artista()).getN_artista()}</p></a>
                                                     </div>  
 
                                                 </div>
@@ -161,13 +161,12 @@ and open the template in the editor.
                                                 <img class="d-block w-100" src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" alt="First slide" >
                                                 <div class="carousel-caption d-none d-md-block" id="textCarrusel">
 
-                                                    <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
-                                                    <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                    <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${ldao.getLanzamientoProducto(p.getK_producto()).getK_lanzamiento()}&k_artista=${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista()}"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
+                                                    <a href="ControladorArtista?accion=ArtistaPage&k_artista=${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista()}" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
 
 
-                                                    <strong><p>${p.getK_estado()} - ${p.getK_formato()}
-
-                                                        </p> </strong>
+                                                    <a href="ControladorProducto?accion=ProductoPage&k_producto=${p.getK_producto()}" style="color:white"><strong><p>${p.getK_estado()} - ${p.getK_formato()}</p> </strong></a>
+                                                    
 
                                                 </div>
                                             </div>
@@ -177,11 +176,11 @@ and open the template in the editor.
                                                 <img class="d-block w-100" src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" alt="First slide" >
                                                 <div class="carousel-caption d-none d-md-block" id="textCarrusel">
                                                     <div>
-                                                        <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
-                                                        <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
-                                                        <strong><p>${p.getK_estado()} - ${p.getK_formato()}
+                                                        <a href="ControladorLanzamiento?accion=LanzamientoPage&k_lanzamiento=${ldao.getLanzamientoProducto(p.getK_producto()).getK_lanzamiento()}&k_artista=${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista()}"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
+                                                        <a href="ControladorArtista?accion=ArtistaPage&k_artista=${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista()}" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                        <a href="ControladorProducto=?accion=ProductoPage&k_producto=${p.getK_producto()}" style="color:white"><strong><p>${p.getK_estado()} - ${p.getK_formato()}
 
-                                                        </p> </strong>
+                                                                </p> </strong> </a>
                                                     
                                                     </div>
                                                     <div>

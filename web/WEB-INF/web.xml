@@ -28,6 +28,10 @@
         <servlet-name>ControladorBuscar</servlet-name>
         <servlet-class>controlador.ControladorBuscar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorProducto</servlet-name>
+        <servlet-class>controlador.ControladorProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorIMG</servlet-name>
         <url-pattern>/ControladorIMG</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ControladorBuscar</servlet-name>
         <url-pattern>/ControladorBuscar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorProducto</servlet-name>
+        <url-pattern>/ControladorProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

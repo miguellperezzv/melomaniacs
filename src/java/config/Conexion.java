@@ -36,7 +36,7 @@ public class Conexion {
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melomaniacsdb", userMYSQL, passMYSQL);
                 //conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/melomaniacs", user, pass);
                 //conn = DriverManager.getConnection("jdbc:mysql://node53495-melomaniacsmusic.jelastic.saveincloud.net:3306/melomaniacsdb", userhosting, passhosting);
-                System.out.println("Conexión realizada. .  .   . ");
+                //System.out.println("Conexión realizada. .  .   . ");
             } catch (ClassNotFoundException | SQLException ex) {
                 System.out.print("Error en conexion con la Base De datos: "+ex );
             }

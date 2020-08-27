@@ -27,8 +27,10 @@ import javax.servlet.http.Part;
 import modelo.Lanzamiento;
 import modelo.Producto;
 import modeloDAO.ArtistaDAO;
+import modeloDAO.CatalogoDAO;
 import modeloDAO.LanzamientoDAO;
 import modeloDAO.ProductoDAO;
+import modeloDAO.UsuarioDAO;
 
 /**
  *
@@ -109,6 +111,8 @@ public class ControladorLanzamiento extends HttpServlet {
                 request.setAttribute("nuevos", listaNuevos);
                 request.setAttribute("adao", new ArtistaDAO());
                 request.setAttribute("ldao", new LanzamientoDAO());
+                request.setAttribute("udao", new UsuarioDAO());
+                request.setAttribute("cdao", new CatalogoDAO());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;
 
