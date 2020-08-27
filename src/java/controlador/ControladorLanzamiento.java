@@ -107,6 +107,7 @@ public class ControladorLanzamiento extends HttpServlet {
                 List<Lanzamiento> listaNuevos = ldao.ListarNuevosLanzamientos();
                 request.setAttribute("lista", lista);
                 request.setAttribute("nuevos", listaNuevos);
+                request.setAttribute("adao", new ArtistaDAO());
                 request.setAttribute("ldao", new LanzamientoDAO());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;

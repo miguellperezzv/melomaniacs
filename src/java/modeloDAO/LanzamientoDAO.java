@@ -203,7 +203,7 @@ public class LanzamientoDAO {
             while (rs.next()) {
                 n_artista = rs.getString("n_artista");
             }
-            conn.close();
+            //conn.close();
         } catch (SQLException e) {
             System.out.println("Error en getnartista/daolanzamiento" + e);
         }

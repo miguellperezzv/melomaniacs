@@ -95,7 +95,47 @@ and open the template in the editor.
 
                 <div class="NUEVOSLANZAMIENTOS" style="background-color: #1f1f1f;">
                     <center><h2 id="subtituloInfo" style="font-size: 30px"> Nuevos Lanzamientos</h2></center>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" width="300" height="300">
 
+                            <div class="carousel-inner"  >
+
+                                <c:forEach var='l' items="${nuevos}" varStatus="i">
+                                    <c:choose>
+                                        <c:when test="${i.index==0}">
+                                            <div class="carousel-item active" >
+                                                <img class="d-block w-100" src="${l.getI_lanzamiento()}" alt="First slide" >
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <a href="#"><h5 >${l.getN_lanzamiento()}</h5></a>
+                                                    <a href="#" style="color:white"><p>${adao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                </div>
+                                            </div>
+                                        </c:when>    
+                                        <c:otherwise>
+                                            <div class="carousel-item" >
+                                                <img class="d-block w-100" src="${ldao.getLanzamientoProducto(p.getK_producto()).getI_lanzamiento()}" alt="First slide" >
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <a href="#"><h5 >${ldao.getLanzamientoProducto(p.getK_producto()).getN_lanzamiento()}</h5></a>
+                                                    <a href="#" style="color:white"><p>${ldao.getLanzamientoProducto(p.getK_producto()).getK_artista_nombre()}</p></a>
+                                                </div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+
+                                </c:forEach>
+
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
 
                     <center></center>
 
